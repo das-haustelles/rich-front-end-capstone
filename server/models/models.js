@@ -5,11 +5,10 @@ module.exports = {
 
   },
   bookings: {
-    get: (hostelId, callback) => {
-      return db.Booking.findAll({
+    get: (hostelId, callback) => 
+      db.Booking.findAll({
         where: {
-          hostel_id: hostelId
-        }
+          hostel_id: hostelId,
       })
         .then((bookings) => {
           callback(bookings);

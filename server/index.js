@@ -10,7 +10,7 @@ const app = express();
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../public')));
 
 
@@ -21,4 +21,4 @@ app.get('/hostels/:id/bookings', (req, res) => {
   });
 });
 
-app.listen(PORT, () => {console.log(`server running at: http://localhost:${PORT}`)});
+app.listen(PORT, () => { console.log(`server running at: http://localhost:${PORT}`); });
