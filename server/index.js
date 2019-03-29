@@ -10,4 +10,8 @@ const app = express();
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, '../public')));
 
+app.get('hostels/:id/bookings', (req, res) => {
+  const hostelId = req.params.id;
+});
+
 app.listen(PORT, () => {console.log(`server running at: http://localhost:${PORT}`)});
