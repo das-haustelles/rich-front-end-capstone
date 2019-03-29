@@ -3,7 +3,7 @@ const path = require('path');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const db = require('../db/index');
-const PORT = 3000;
+const PORT = process.env.port || 3000;
 
 const app = express();
 
