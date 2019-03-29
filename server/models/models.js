@@ -6,7 +6,7 @@ module.exports = {
   },
   bookings: {
     get: (hostelId, callback) => {
-      db.Booking.findAll({
+      return db.Booking.findAll({
         where: {
           hostel_id: hostelId
         }
