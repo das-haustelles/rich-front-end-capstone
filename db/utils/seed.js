@@ -1,4 +1,3 @@
-const Sequelize = require('sequelize');
 const db = require('../index');
 const hostels = require('../utils/hostels');
 const bookings = require('../utils/bookings');
@@ -17,10 +16,8 @@ db.sequelize.drop()
           .then(() => {
             db.Booking.bulkCreate(mockBookings)
               .then(() => {
-                db.sequelize.close()
+                db.sequelize.close();
               });
           });
-      })
+      });
   });
-
-  
