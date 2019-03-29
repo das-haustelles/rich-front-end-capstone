@@ -3,7 +3,8 @@ const config = require('./utils/config');
 
 const sequelize = new Sequelize('fec', config.userName, config.userPass, {
   host: 'localhost',
-  dialect: 'mysql'
+  dialect: 'mysql',
+  logging: false,
 });
 
 sequelize
