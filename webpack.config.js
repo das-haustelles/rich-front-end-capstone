@@ -6,22 +6,22 @@ module.exports = {
   entry: SRC_DIR + '/index.jsx',
   output: {
     path: DIST_DIR,
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.(js|jsx)?$/,
         include: SRC_DIR,
         loader: 'babel-loader',
         options: {
-          presets: ['@babel/preset-env', '@babel/preset-react']
-        }
-      }
+          presets: ['@babel/preset-env', '@babel/preset-react'],
+        },
+      },
 
-    ]
+    ],
   },
   resolve: {
-    extensions: ['.js', '.json', '.jsx', '.css']
-  }
-}
+    extensions: ['.js', '.json', '.jsx', '.css'],
+  },
+};
