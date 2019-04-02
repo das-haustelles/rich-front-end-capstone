@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PrivateRoomList from './components/PrivateRoomList';
+import DormBedList from './components/DormBedList';
 
 const App = () => {
   return (
     <div>
-      <PrivateRoomList />
+      <PrivateRoomList /> <br></br>
+      <DormBedList />
     </div>
   )
 }
