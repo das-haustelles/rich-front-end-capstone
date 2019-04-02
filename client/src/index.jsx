@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import PrivateRoomList from './components/PrivateRoomList';
 
 const App = () => {
   return (
     <div>
-      <h1>Hello Wicha</h1>
+      <PrivateRoomList />
     </div>
   )
 }
