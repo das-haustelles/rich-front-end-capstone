@@ -62,7 +62,7 @@ class Calendar extends React.Component {
   }
 
   render() {
-    const weekdays = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
+    const weekdays = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 
     return(
       <div>
