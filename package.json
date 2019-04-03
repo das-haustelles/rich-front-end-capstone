@@ -24,7 +24,9 @@
     },
     "moduleNameMapper": {
       "\\.(css|scss)$": "<rootDir>/__mocks__/styleMock.js"
-    }
+    },
+    "collectCoverage": true,
+    "coverageReporters": ["json", "html"]
   },
   "dependencies": {
     "body-parser": "^1.18.3",
