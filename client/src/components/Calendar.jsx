@@ -1,5 +1,5 @@
 import React from 'react';
-import Dates from './Dates';
+import Week from './Week';
 import moment from 'moment';
 
 class Calendar extends React.Component {
@@ -8,47 +8,46 @@ class Calendar extends React.Component {
     this.state = {
       month: 0,
       year: 0,
+      dates: [],
     }
   }
 
   componentDidMount() {
     const currentDate = moment();
+    const currentYear = currentDate.year();
+    const currentMonth = currentDate.month();
+    const dates = this.generateDates(2019, 6);
     this.setState({
-      month: currentDate.month(),
-      year: currentDate.year(),
+      month: currentMonth,
+      year: currentYear,
+      dates: dates,
     });
-    console.log(this.generateDates());
   }
 
-  getFirstDayOfMonth() {
-    const firstDay = new Date(this.state.year, this.state.month, 1);
-    this.setState({firstDay: firstDay});
-  }
-
-  generateFirstWeek () {
+  generateFirstWeek (year, month) {
     const firstWeek = []
-    const currentYear = moment().year();
-    const currentMonth = moment().month();
-    const firstDayIndex = parseInt(moment().startOf('month').format('d'));
+    const currentYear = moment().year(year);
+    const currentMonth = moment().month(month);
+    const firstDayIndex = parseInt(moment().year(year).month(month).startOf('month').format('d'));
     
     for (var i = 0; i < 7; i += 1) {
-      const firstDayOfMonth = moment().startOf('month');
+      const firstDayOfMonth = moment().year(year).month(month).startOf('month');
 
       if (i < firstDayIndex) {
         firstWeek.push(firstDayOfMonth.subtract((firstDayIndex - i), 'days'));
       } else if (i === firstDayIndex) {
-        firstWeek.push(moment().startOf('month'));
+        firstWeek.push(firstDayOfMonth);
       } else {
         firstWeek.push(firstDayOfMonth.add((i - firstDayIndex), 'days'));
       }
     }
-  
+
     return firstWeek;
   }
 
-  generateDates () {
+  generateDates(year, month) {
     const dates = [];
-    const firstWeek = this.generateFirstWeek();
+    const firstWeek = this.generateFirstWeek(year, month);
     dates.push(firstWeek);
 
     for (var i = 0; i < 5; i += 1) {
@@ -67,7 +66,16 @@ class Calendar extends React.Component {
 
     return(
       <div>
-        
+        <table>
+          <thead>
+            <th>{weekdays.map((day) => (<td>{day}</td>))}</th>
+          </thead>
+          <tbody>
+            {this.state.dates.map((week) => (
+              <tr><Week week={week} /></tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     )
   }
