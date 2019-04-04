@@ -3,13 +3,13 @@ import CheckInInput from './CheckInInput';
 import CheckOutInput from './CheckOutInput';
 import GuestsDropDown from './GuestsDropDown';
 
-const DateForm = () => {
+const DateForm = ({ checkIn, checkOut, bookedDates }) => {
   return(
     <div>
       <form>
         <span>
-          <CheckInInput />
-          <CheckOutInput />
+          <CheckInInput checkIn={checkIn} />
+          <CheckOutInput checkOut={checkOut}/>
           <GuestsDropDown />
         </span>
         <div className="search-submit-row">

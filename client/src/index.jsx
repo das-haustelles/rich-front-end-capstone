@@ -15,7 +15,9 @@ class App extends React.Component {
   render() {
     return(
     <div>
-      <DateForm />
+      <DateForm checkIn= {this.state.checkInDate} 
+                checkOut={this.state.checkOutDate} 
+                bookedDates= {this.state.bookedDates} />
     </div>
     )
   }

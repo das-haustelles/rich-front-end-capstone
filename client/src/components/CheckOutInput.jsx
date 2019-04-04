@@ -1,13 +1,13 @@
 import React from 'react';
 
-const CheckOutInput = () => {
+const CheckOutInput = ({ checkOut }) => {
   return(
     <div className="search-form checkout-field">
       <span className="form-label">Check Out</span>
       <div>
         <div className="calendar-container" pane-width="300">
           <div>
-            <input value="06 Apr 2019" type="text" readOnly="readonly" className="datepicker"></input>
+            <input value={checkOut} type="text" readOnly="readonly" className="datepicker"></input>
             <a>
               <i>Calendar Image</i>
             </a>
