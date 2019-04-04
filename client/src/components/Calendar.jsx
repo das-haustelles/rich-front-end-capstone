@@ -1,6 +1,7 @@
 import React from 'react';
 import Week from './Week';
 import moment from 'moment';
+import Header from './Header';
 
 class Calendar extends React.Component {
   constructor(props) {
@@ -26,8 +27,6 @@ class Calendar extends React.Component {
 
   generateFirstWeek (year, month) {
     const firstWeek = []
-    const currentYear = moment().year(year);
-    const currentMonth = moment().month(month);
     const firstDayIndex = parseInt(moment().year(year).month(month).startOf('month').format('d'));
     
     for (var i = 0; i < 7; i += 1) {
@@ -61,11 +60,25 @@ class Calendar extends React.Component {
     return dates;
   }
 
+  handleNext() {
+    const currentMonth = moment().month(this.state.month);
+    const nextMonth = currentMonth.add(1, 'month').month();
+    const dates = this.generateDates(this.state.year, nextMonth);
+    this.setState({
+      month: nextMonth,
+      dates: dates,
+    });
+
+  }
+
   render() {
     const weekdays = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 
     return(
       <div>
+        <Header currentMonth={this.state.month}
+                currentYear={this.state.year}
+                handleNext={this.handleNext.bind(this)}/>
         <table>
           <thead>
             <th>{weekdays.map((day) => (<td>{day}</td>))}</th>
