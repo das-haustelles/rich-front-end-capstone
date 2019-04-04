@@ -7,7 +7,7 @@ const CheckOutInput = () => {
       <div>
         <div className="calendar-container" pane-width="300">
           <div>
-            <input type="text" readOnly="readonly" className="datepicker"></input>
+            <input value="06 Apr 2019" type="text" readOnly="readonly" className="datepicker"></input>
             <a>
               <i>Calendar Image</i>
             </a>

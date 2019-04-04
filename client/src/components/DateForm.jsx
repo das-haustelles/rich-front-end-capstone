@@ -12,6 +12,10 @@ const DateForm = () => {
           <CheckOutInput />
           <GuestsDropDown />
         </span>
+        <div className="search-submit-row">
+          <span className="form-label"></span>
+          <button type="submit" className="search-button">Search</button>
+        </div>
       </form>
     </div>
   )
