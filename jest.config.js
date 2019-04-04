@@ -1,6 +1,7 @@
 module.exports = {
   clearMocks: true,
-  collectCoverageFrom: ['src/**/*.{js,jsx,mjs}'],
+  collectCoverage: true,
+  collectCoverageFrom: ['client/src/**/*.{js,jsx,mjs}'],
   coverageDirectory: 'coverage',
   moduleFileExtensions: ['js', 'json', 'jsx'],
   setupFiles: ['<rootDir>/enzyme.config.js'],
