@@ -16,7 +16,7 @@ class Calendar extends React.Component {
     const currentDate = moment();
     const currentYear = currentDate.year();
     const currentMonth = currentDate.month();
-    const dates = this.generateDates(2019, 6);
+    const dates = this.generateDates(currentYear, currentMonth);
     this.setState({
       month: currentMonth,
       year: currentYear,
