@@ -10,16 +10,49 @@ class App extends React.Component {
     this.state = {
       checkInDate: moment(),
       checkOutDate: moment().add(3, 'days'),
-      bookedDates: []
+      newReservation: false,
+      bookedDates: [],
     }
   }
-  render() {
+
+  handleNewReservation() {
+    this.setState({ newReservation: true });
+  }
+
+  renderSummary() {
     return(
-    <div>
-      <DateForm checkIn= {this.state.checkInDate} 
-                checkOut={this.state.checkOutDate} 
-                bookedDates= {this.state.bookedDates} />
+      <div>
+      <div>
+        <div>
+          <i>Calendar Image Placeholder</i>
+          <span>{this.state.checkInDate.format('ddd D MMM YYYY-') + this.state.checkOutDate.format('ddd D MMM YYYY') }</span>
+        </div>
+      </div>
+      <a>
+        <i>Search Image Placeholder</i>
+        <span onClick= {() => this.handleNewReservation()}>Change</span>
+      </a>
     </div>
+    )
+  }
+
+  renderForm() {
+    return(
+      <div>
+        <DateForm checkIn= {this.state.checkInDate} 
+                  checkOut={this.state.checkOutDate} 
+                  bookedDates= {this.state.bookedDates} />
+      </div>
+    )
+  }
+
+  render() {
+    const newReservation = this.state.newReservation;
+    return(
+      <div>
+        <h2>Check Availability</h2>
+        {newReservation ? this.renderForm() : this.renderSummary()}
+      </div>
     )
   }
 }
