@@ -5,8 +5,8 @@ const Week = ({ week, currentDate }) => {
   return (
     <div>
       {week.map((date) => (
-        <td><Day date={date.date()}
-                 currentDate={currentDate.date()}/></td>
+        <Day date={date.date()}
+                 currentDate={currentDate.date()}/>
       ))}
     </div>
   )

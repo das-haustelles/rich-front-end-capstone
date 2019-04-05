@@ -6,21 +6,21 @@ import DateForm from './components/DateForm';
 import styled from 'styled-components';
 
 const Header = styled.h2`
-  font-size: 1.4rem;
+  font-size: 22px;
   font-family: "Noto",Helvetica,Arial,sans-serif;
   font-weight: 300;
-  line-height: 1.4;
-  color: #444;
-  margin-top: 0;
-  margin-bottom: .5rem;
+  line-height: 32px;
+  color: #444444;
   display: block;
+  text-align: start;
 `;
 
 const DateRange = styled.div`
-  color: #333;
-  font-size: .8rem;
-  margin-left: .25rem;
+  color: #333333;
+  font-size: 12px;
+  line-height: 19px;
   font-family: "Noto",Helvetica,Arial,sans-serif;
+  text-align: start;
 `;
 
 const Change = styled.a`

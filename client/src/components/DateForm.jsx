@@ -1,6 +1,4 @@
 import React from 'react';
-import CheckInInput from './CheckInInput';
-import CheckOutInput from './CheckOutInput';
 import GuestsDropDown from './GuestsDropDown';
 import GroupForm from './GroupForm';
 
@@ -22,8 +20,23 @@ class DateForm extends React.Component {
       <div>
         <form>
           <span>
-            <CheckInInput checkIn={this.props.checkIn}/>
-            <CheckOutInput checkOut={this.props.checkOut}/>
+          <span className="form-label">Check In</span>
+              <div className="calendar-container" pane-width="300">
+                  <input value={this.props.checkIn.format('DD MMM YYYY')} 
+                        type="text" 
+                        readOnly="readonly" 
+                        className="datepicker"></input>
+                  <a>
+                    <i>Calendar Image</i>
+                  </a>
+              </div>
+            <span className="form-label">Check Out</span>
+                <div className="calendar-container" pane-width="300">
+                    <input value={this.props.checkOut.format('DD MMM YYYY')} type="text" readOnly="readonly" className="datepicker"></input>
+                    <a>
+                      <i>Calendar Image</i>
+                    </a>
+                </div>
             {largeParty ? <div> <GuestsDropDown handleNumberOfGuests={this.handleNumberOfGuests.bind(this)} /> <GroupForm /></div> 
               : <GuestsDropDown handleNumberOfGuests={this.handleNumberOfGuests.bind(this)}/>}
           </span>
