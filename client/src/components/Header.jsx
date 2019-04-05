@@ -2,7 +2,7 @@ import React from 'react';
 import moment from 'moment';
 
 const Header = ({ currentMonth, currentYear, handleNext, handlePrev }) => {
-  const monthDisplay = moment().month(currentMonth).format('MMM');
+  const monthDisplay = moment().month(currentMonth).format('MMMM');
   const banner = monthDisplay + ' ' + currentYear; 
   return(
     <div>
