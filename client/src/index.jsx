@@ -10,7 +10,7 @@ class App extends React.Component {
     this.state = {
       checkInDate: moment(),
       checkOutDate: moment().add(3, 'days'),
-      newReservation: false,
+      newReservation: true,
       bookedDates: [],
     }
   }

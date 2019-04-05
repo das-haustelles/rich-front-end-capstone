@@ -11,7 +11,7 @@ const GuestsDropDown = ({ handleNumberOfGuests }) => {
       <select name="number_of_guests" onChange={(e) => handleNumberOfGuests(e)}>
         <option value="1">1 Guest</option>
         {options.map((option) => (
-          <option value={option + ""}>{option} Guests</option>
+          <option value={option}>{option} Guests</option>
         ))}
       </select>
     </div>

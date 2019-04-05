@@ -1,4 +1,5 @@
 import React from 'react';
+import Calendar from './Calendar';
 
 const CheckInInput = ({ checkIn }) => {
   return(
@@ -6,8 +7,11 @@ const CheckInInput = ({ checkIn }) => {
       <span className="form-label">Check In</span>
       <div>
         <div className="calendar-container" pane-width="300">
-          <div>
-            <input value={checkIn.format('DD MMM YYYY')} type="text" readOnly="readonly" className="datepicker"></input>
+          <div> 
+            <input value={checkIn.format('DD MMM YYYY')} 
+                   type="text" 
+                   readOnly="readonly" 
+                   className="datepicker"></input>
             <a>
               <i>Calendar Image</i>
             </a>

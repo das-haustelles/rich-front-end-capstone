@@ -8,7 +8,7 @@ class DateForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      guests: 9
+      guests: 1
     }
   }
 
@@ -22,7 +22,7 @@ class DateForm extends React.Component {
       <div>
         <form>
           <span>
-            <CheckInInput checkIn={this.props.checkIn} />
+            <CheckInInput checkIn={this.props.checkIn}/>
             <CheckOutInput checkOut={this.props.checkOut}/>
             {largeParty ? <div> <GuestsDropDown handleNumberOfGuests={this.handleNumberOfGuests.bind(this)} /> <GroupForm /></div> 
               : <GuestsDropDown handleNumberOfGuests={this.handleNumberOfGuests.bind(this)}/>}
