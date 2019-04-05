@@ -1,4 +1,31 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const Label = styled.label`
+  font-size: .8125rem;
+  color: #333;
+  padding: .5rem;
+  margin: .125rem .5rem;
+  border: .0625rem solid #ccc;
+  background-color: #fff;
+  text-align: center;
+  width: 100%;
+  white-space: nowrap;
+  border-radius: .1875rem;
+`
+
+const List = styled.li`
+  width: 16.66667%;
+  font-family: "Noto",Helvetica,Arial,sans-serif;
+  padding: .5rem .5rem 0;
+  float: left;
+  box-sizing: border-box;
+  list-style: none;
+`
+const Input = styled.input`
+  position: absolute;
+  visibility: hidden;
+`
 
 const GroupForm = () => {
   const options = [
@@ -27,10 +54,10 @@ const GroupForm = () => {
           <span className="form-label">Age Ranges</span>
           <ul className="age-ranges-list">
             {ages.map((age) =>(
-              <li>
-                <input id={"58-age-ranges-" + ages.indexOf(age)} type="checkbox" value={age}></input>
-                <label htmlFor={"58-age-ranges-" + ages.indexOf(age)}>{age}</label>
-              </li>
+              <List>
+                <Input id={"58-age-ranges-" + ages.indexOf(age)} type="checkbox" value={age}></Input>
+                <Label htmlFor={"58-age-ranges-" + ages.indexOf(age)}>{age}</Label>
+              </List>
             ))}
           </ul>
         </div>
