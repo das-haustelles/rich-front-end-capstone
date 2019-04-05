@@ -2,8 +2,7 @@ import React from 'react';
 import Week from './Week';
 import moment from 'moment';
 import Header from './Header';
-import generateFirstWeek from '../../utils/generateFirstWeek';
-import generateDates from '../../utils/generateDate';
+import generateDates from '../../utils/generateDates';
 
 class Calendar extends React.Component {
   constructor(props) {
