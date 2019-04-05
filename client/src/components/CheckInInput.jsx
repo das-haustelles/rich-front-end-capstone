@@ -1,5 +1,6 @@
 import React from 'react';
 import Calendar from './Calendar';
+import styled from 'styled-components';
 
 const CheckInInput = ({ checkIn }) => {
   return(

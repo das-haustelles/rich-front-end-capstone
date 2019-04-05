@@ -3,6 +3,32 @@ import ReactDOM from 'react-dom';
 import moment from 'moment'; 
 import Calendar from './components/Calendar';
 import DateForm from './components/DateForm';
+import styled from 'styled-components';
+
+const Header = styled.h2`
+  font-size: 1.4rem;
+  font-family: "Noto",Helvetica,Arial,sans-serif;
+  font-weight: 300;
+  line-height: 1.4;
+  color: #444;
+  margin-top: 0;
+  margin-bottom: .5rem;
+  display: block;
+`;
+
+const DateRange = styled.div`
+  color: #333;
+  font-size: .8rem;
+  margin-left: .25rem;
+  font-family: "Noto",Helvetica,Arial,sans-serif;
+`;
+
+const Change = styled.a`
+  margin-left: .25rem;  
+  box-sizing: border-box;
+  font-size: .8rem;
+  color: #ff7547;
+`;
 
 class App extends React.Component {
   constructor(props) {
@@ -10,7 +36,7 @@ class App extends React.Component {
     this.state = {
       checkInDate: moment(),
       checkOutDate: moment().add(3, 'days'),
-      newReservation: true,
+      newReservation: false,
       bookedDates: [],
     }
   }
@@ -23,15 +49,15 @@ class App extends React.Component {
     return(
       <div>
       <div>
-        <div>
+        <DateRange>
           <i>Calendar Image Placeholder</i>
           <span>{this.state.checkInDate.format('ddd D MMM YYYY-') + this.state.checkOutDate.format('ddd D MMM YYYY') }</span>
-        </div>
+        </DateRange>
       </div>
-      <a>
+      <Change>
         <i>Search Image Placeholder</i>
         <span onClick= {() => this.handleNewReservation()}>Change</span>
-      </a>
+      </Change>
     </div>
     )
   }
@@ -50,7 +76,7 @@ class App extends React.Component {
     const newReservation = this.state.newReservation;
     return(
       <div>
-        <h2>Check Availability</h2>
+        <Header>Check Availability</Header>
         {newReservation ? this.renderForm() : this.renderSummary()}
       </div>
     )
