@@ -12,6 +12,10 @@ class DateForm extends React.Component {
     }
   }
 
+  handleNumberOfGuests(e) {
+    this.setState({ guests: e.target.value});
+  }
+
   render() {
     const largeParty = this.state.guests >= 9;
     return(
@@ -20,7 +24,8 @@ class DateForm extends React.Component {
           <span>
             <CheckInInput checkIn={this.props.checkIn} />
             <CheckOutInput checkOut={this.props.checkOut}/>
-            {largeParty ? <div> <GuestsDropDown /> <GroupForm /></div> : <GuestsDropDown />}
+            {largeParty ? <div> <GuestsDropDown handleNumberOfGuests={this.handleNumberOfGuests.bind(this)} /> <GroupForm /></div> 
+              : <GuestsDropDown handleNumberOfGuests={this.handleNumberOfGuests.bind(this)}/>}
           </span>
           <div className="search-submit-row">
             <span className="form-label"></span>
