@@ -2,6 +2,8 @@ import React from 'react';
 import Week from './Week';
 import moment from 'moment';
 import Header from './Header';
+import generateFirstWeek from '../../utils/generateFirstWeek';
+import generateDates from '../../utils/generateDate';
 
 class Calendar extends React.Component {
   constructor(props) {
@@ -18,54 +20,13 @@ class Calendar extends React.Component {
     const currentDate = moment();
     const currentYear = currentDate.year();
     const currentMonth = currentDate.month();
-    const dates = this.generateDates(currentYear, currentMonth);
+    const dates = generateDates(currentYear, currentMonth);
     this.setState({
+      currentDate: currentDate,
       month: currentMonth,
       year: currentYear,
       dates: dates,
     });
-  }
-
-  generateFirstWeek (year, month) {
-    const firstWeek = []
-    const firstDayIndex = parseInt(moment()
-                                   .year(year)
-                                   .month(month)
-                                   .startOf('month')
-                                   .format('d'));
-    
-    for (var i = 0; i < 7; i += 1) {
-      const firstDayOfMonth = moment()
-                              .year(year)
-                              .month(month)
-                              .startOf('month');
-
-      if (i < firstDayIndex) {
-        firstWeek.push(firstDayOfMonth.subtract((firstDayIndex - i), 'days'));
-      } else if (i === firstDayIndex) {
-        firstWeek.push(firstDayOfMonth);
-      } else {
-        firstWeek.push(firstDayOfMonth.add((i - firstDayIndex), 'days'));
-      }
-    }
-
-    return firstWeek;
-  }
-
-  generateDates(year, month) {
-    const dates = [];
-    const firstWeek = this.generateFirstWeek(year, month);
-    dates.push(firstWeek);
-
-    for (var i = 0; i < 5; i += 1) {
-      const week = dates[dates.length - 1];
-      const nextWeek = week.map((date) => {
-        return moment(date).add(7, 'days');
-      });
-      dates.push(nextWeek);
-    }
-
-    return dates;
   }
 
   handleNext() {
@@ -73,7 +34,7 @@ class Calendar extends React.Component {
     const nextMonth = currentMonth.add(1, 'month').month();
     const currentYear = currentMonth.add(1, 'month').year();
     console.log(currentMonth.add(1, 'month').year());
-    const dates = this.generateDates(this.state.year, nextMonth);
+    const dates = generateDates(this.state.year, nextMonth);
     this.setState({
       month: nextMonth,
       dates: dates,
