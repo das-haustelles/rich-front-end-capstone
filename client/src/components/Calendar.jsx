@@ -9,37 +9,41 @@ class Calendar extends React.Component {
     super(props)
     this.state = {
       currentDate: moment(),
-      month: 0,
-      year: 0,
+      month: moment().month(),
+      year: moment().year(),
       dates: [],
     }
   }
 
   componentDidMount() {
-    const currentDate = moment();
-    const currentYear = currentDate.year();
-    const currentMonth = currentDate.month();
-    const dates = generateDates(currentYear, currentMonth);
+    const dates = generateDates(this.state.year, this.state.month);
     this.setState({
-      currentDate: currentDate,
-      month: currentMonth,
-      year: currentYear,
       dates: dates,
     });
   }
 
   handleNext() {
-    const currentMonth = moment().month(this.state.month);
-    const nextMonth = currentMonth.add(1, 'month').month();
-    const currentYear = currentMonth.add(1, 'month').year();
-    console.log(currentMonth.add(1, 'month').year());
-    const dates = generateDates(this.state.year, nextMonth);
+    const dateObject = moment([this.state.year, this.state.month]).add(1, 'month');
+    const nextMonth = dateObject.month();
+    const currentYear = dateObject.year();
+    const dates = generateDates(currentYear, nextMonth);
     this.setState({
       month: nextMonth,
-      dates: dates,
       year: currentYear,
+      dates: dates,
     });
+  }
 
+  handlePrev() {
+    const dateObject = moment.max(moment(), moment([this.state.year, this.state.month]).subtract(1, 'month'));
+    const prevMonth = dateObject.month();
+    const currentYear = dateObject.year();
+    const dates = generateDates(currentYear, prevMonth);
+    this.setState({
+      month: prevMonth,
+      year: currentYear,
+      dates: dates,
+    });
   }
 
   render() {
@@ -49,7 +53,8 @@ class Calendar extends React.Component {
       <div>
         <Header currentMonth={this.state.month}
                 currentYear={this.state.year}
-                handleNext={this.handleNext.bind(this)}/>
+                handleNext={this.handleNext.bind(this)}
+                handlePrev={this.handlePrev.bind(this)} />
         <table>
           <thead>
             <th>{weekdays.map((day) => (<td>{day}</td>))}</th>
