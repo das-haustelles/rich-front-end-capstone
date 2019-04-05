@@ -7,6 +7,7 @@ class Calendar extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      currentDate: moment(),
       month: 0,
       year: 0,
       dates: [],
@@ -27,10 +28,17 @@ class Calendar extends React.Component {
 
   generateFirstWeek (year, month) {
     const firstWeek = []
-    const firstDayIndex = parseInt(moment().year(year).month(month).startOf('month').format('d'));
+    const firstDayIndex = parseInt(moment()
+                                   .year(year)
+                                   .month(month)
+                                   .startOf('month')
+                                   .format('d'));
     
     for (var i = 0; i < 7; i += 1) {
-      const firstDayOfMonth = moment().year(year).month(month).startOf('month');
+      const firstDayOfMonth = moment()
+                              .year(year)
+                              .month(month)
+                              .startOf('month');
 
       if (i < firstDayIndex) {
         firstWeek.push(firstDayOfMonth.subtract((firstDayIndex - i), 'days'));
@@ -63,10 +71,13 @@ class Calendar extends React.Component {
   handleNext() {
     const currentMonth = moment().month(this.state.month);
     const nextMonth = currentMonth.add(1, 'month').month();
+    const currentYear = currentMonth.add(1, 'month').year();
+    console.log(currentMonth.add(1, 'month').year());
     const dates = this.generateDates(this.state.year, nextMonth);
     this.setState({
       month: nextMonth,
       dates: dates,
+      year: currentYear,
     });
 
   }
@@ -85,7 +96,8 @@ class Calendar extends React.Component {
           </thead>
           <tbody>
             {this.state.dates.map((week) => (
-              <tr><Week week={week} /></tr>
+              <tr><Week week={week}
+                        currentDate={this.state.currentDate} /></tr>
             ))}
           </tbody>
         </table>
