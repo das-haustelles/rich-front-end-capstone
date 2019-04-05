@@ -6,9 +6,9 @@ const Header = ({ currentMonth, currentYear, handleNext, handlePrev }) => {
   const banner = monthDisplay + ' ' + currentYear; 
   return(
     <div>
-      <button onClick= {() => handlePrev()}> Prev </button>
+      <button className="calendar-button button-prev" onClick= {() => handlePrev()}> Prev </button>
       <h2>{banner}</h2>
-      <button onClick= {() => handleNext()}> Next </button>
+      <button className="calendar-button button-next" onClick= {() => handleNext()}> Next </button>
     </div>
   )
 }
