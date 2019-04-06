@@ -9,14 +9,15 @@ const CalendarWeek = styled.tr`
   text-align: center;
 `
 
-const Week = ({ week, currentDate, bookedDates, month }) => {
+const Week = ({ week, currentDate, bookedDates, month, handleNewDate }) => {
   return (
     <CalendarWeek>
       {week.map((date) => (
         <Day date={date}
              month={month}
              currentDate={currentDate}
-             bookedDates={bookedDates}/>
+             bookedDates={bookedDates}
+             handleNewDate={handleNewDate}/>
       ))}
     </CalendarWeek>
   )

@@ -48,7 +48,6 @@ class App extends React.Component {
   }
   componentDidMount() {
     const hostelID = window.location.pathname.split('/')[2];
-    console.log(hostelID);
     axios.get(`/api/hostels/${hostelID}`)
       .then((response) => {
         const checkInDate = moment(response.data.checkInDate);
@@ -70,6 +69,14 @@ class App extends React.Component {
 
   handleNewReservation() {
     this.setState({ newReservation: true });
+  }
+
+  handleNewDate(date) {
+    const newDate = moment(date);
+    this.setState({
+      checkInDate: newDate,
+      checkOutDate: moment(newDate).add(1, 'days'),
+    });
   }
 
   renderSummary() {
@@ -105,7 +112,8 @@ class App extends React.Component {
       <Availability>
         <Header>Check Availability</Header>
         {newReservation ? this.renderForm() : this.renderSummary()}
-        <Calendar bookedDates={this.state.bookedDates} />
+        <Calendar bookedDates={this.state.bookedDates} 
+                  handleNewDate={this.handleNewDate.bind(this)}/>
       </Availability>
     )
   }

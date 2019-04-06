@@ -75,7 +75,8 @@ class Calendar extends React.Component {
               <Week week={week}
                     month={this.state.month}
                     currentDate={this.state.currentDate}
-                    bookedDates={this.props.bookedDates} />
+                    bookedDates={this.props.bookedDates}
+                    handleNewDate={this.props.handleNewDate} />
             ))}
           </tbody>
         </Table>
