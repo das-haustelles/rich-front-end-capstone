@@ -5,6 +5,12 @@ import Calendar from './components/Calendar';
 import DateForm from './components/DateForm';
 import styled from 'styled-components';
 
+const Availability = styled.div`
+  background-color: #f4f4f4;
+  border-top: 1px solid #e7e7e7;
+  border-bottom: 1px solid #e7e7e7;
+  display: block;
+`
 const Header = styled.h2`
   font-size: 22px;
   font-family: "Noto",Helvetica,Arial,sans-serif;
@@ -75,10 +81,10 @@ class App extends React.Component {
   render() {
     const newReservation = this.state.newReservation;
     return(
-      <div>
+      <Availability>
         <Header>Check Availability</Header>
         {newReservation ? this.renderForm() : this.renderSummary()}
-      </div>
+      </Availability>
     )
   }
 }
