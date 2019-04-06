@@ -22,18 +22,18 @@ const Hostel = sequelize.define('Hostel', {
     allowNull: false,
   },
   checkInDate: {
-    type: Sequelize.DATE,
+    type: Sequelize.DATEONLY,
     allowNull: false,
   },
   checkOutDate: {
-    type: Sequelize.DATE,
+    type: Sequelize.DATEONLY,
     allowNull: false,
   },
 });
 
 const Booking = sequelize.define('Booking', {
   bookedDate: {
-    type: Sequelize.DATE,
+    type: Sequelize.DATEONLY,
     allowNull: false,
   },
   hostel_id: {
