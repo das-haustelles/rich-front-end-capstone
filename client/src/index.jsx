@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import moment from 'moment'; 
+import axios from 'axios';
 import Calendar from './components/Calendar';
 import DateForm from './components/DateForm';
 import styled from 'styled-components';
@@ -44,6 +45,25 @@ class App extends React.Component {
       newReservation: false,
       bookedDates: [],
     }
+  }
+  componentDidMount() {
+    axios.get('/hostels/2')
+      .then((response) => {
+        const checkInDate = moment(response.data.checkInDate);
+        const checkOutDate = moment(response.data.checkOutDate);
+        this.setState({
+          checkInDate,
+          checkOutDate
+        });
+      });
+    axios.get('/hostels/2/bookings')
+    .then((response) => {
+      const dates = response.data;
+      const bookedDates = dates.map((date) => moment(date));
+      this.setState({
+        bookedDates
+      });
+    });
   }
 
   handleNewReservation() {
