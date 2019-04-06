@@ -21,16 +21,12 @@ const Hostel = sequelize.define('Hostel', {
     type: Sequelize.STRING,
     allowNull: false,
   },
-  roomName: {
-    type: Sequelize.STRING,
+  checkInDate: {
+    type: Sequelize.DATE,
     allowNull: false,
   },
-  roomDescription: {
-    type: Sequelize.STRING,
-    allowNull: false,
-  },
-  roomPrice: {
-    type: Sequelize.DECIMAL(10, 2),
+  checkOutDate: {
+    type: Sequelize.DATE,
     allowNull: false,
   },
 });
