@@ -1,14 +1,22 @@
 import React from 'react';
 import Day from './Day';
+import styled from 'styled-components';
+
+const CalendarWeek = styled.tr`
+  border: 1px solid #ccc;
+  color: #444;
+  line-height: 22px;
+  text-align: center;
+`
 
 const Week = ({ week, currentDate }) => {
   return (
-    <div>
+    <CalendarWeek>
       {week.map((date) => (
-        <td><Day date={date.date()}
-                 currentDate={currentDate.date()}/></td>
+        <Day date={date.date()}
+                 currentDate={currentDate.date()}/>
       ))}
-    </div>
+    </CalendarWeek>
   )
 }
 

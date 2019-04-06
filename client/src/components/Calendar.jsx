@@ -3,7 +3,18 @@ import Week from './Week';
 import moment from 'moment';
 import Header from './Header';
 import generateDates from '../../utils/generateDates';
+import styled from 'styled-components';
 
+const Table = styled.table`
+  background: #fff;
+  border: 1px solid #ccc;
+  text-align: center;
+  color: #222;
+  font-family: "Noto",Helvetica,Arial,sans-serif;
+  font-size: 13px;
+  width: 100%;
+  border-collapse: collapse;
+`
 class Calendar extends React.Component {
   constructor(props) {
     super(props)
@@ -55,17 +66,21 @@ class Calendar extends React.Component {
                 currentYear={this.state.year}
                 handleNext={this.handleNext.bind(this)}
                 handlePrev={this.handlePrev.bind(this)} />
-        <table>
+        <Table>
           <thead>
-            <th>{weekdays.map((day) => (<td>{day}</td>))}</th>
+            <tr>{weekdays.map((day) => (<td>{day}</td>))}</tr>
           </thead>
           <tbody>
             {this.state.dates.map((week) => (
-              <tr><Week week={week}
-                        currentDate={this.state.currentDate} /></tr>
+              <Week week={week}
+                        currentDate={this.state.currentDate} />
             ))}
           </tbody>
-        </table>
+        </Table>
+          <div>
+            <span>Available</span>
+            <span>Sold Out</span>
+          </div>
       </div>
     )
   }
