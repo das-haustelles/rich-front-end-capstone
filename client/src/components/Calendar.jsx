@@ -7,11 +7,13 @@ import styled from 'styled-components';
 
 const Table = styled.table`
   background: #fff;
+  border: 1px solid #ccc;
   text-align: center;
   color: #222;
   font-family: "Noto",Helvetica,Arial,sans-serif;
   font-size: 13px;
   width: 100%;
+  border-collapse: collapse;
 `
 class Calendar extends React.Component {
   constructor(props) {
