@@ -18,8 +18,8 @@ app.get('/hostels/:id', (req, res) => {
   const hostelId = req.params.id;
   models.hostels.get(hostelId, (data) => {
     const hostel = {
-      checkInDate: moment(data[0].checkInDate),
-      checkOutDate: moment(data[0].checkOutDate),
+      checkInDate: data[0].checkInDate,
+      checkOutDate: data[0].checkOutDate,
     };
     res.status(200).send(hostel);
   });
@@ -30,7 +30,7 @@ app.get('/hostels/:id/bookings', (req, res) => {
   models.bookings.get(hostelId, (data) => {
     const bookedDates = [];
     for (let i = 0; i < data.length; i += 1) {
-      bookedDates.push(moment(data[i].bookedDate));
+      bookedDates.push(data[i].bookedDate);
     }
     res.status(200).send(bookedDates);
   });
