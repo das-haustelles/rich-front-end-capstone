@@ -73,7 +73,8 @@ class Calendar extends React.Component {
           <tbody>
             {this.state.dates.map((week) => (
               <Week week={week}
-                        currentDate={this.state.currentDate} />
+                    currentDate={this.state.currentDate}
+                    bookedDates={this.props.bookedDates} />
             ))}
           </tbody>
         </Table>

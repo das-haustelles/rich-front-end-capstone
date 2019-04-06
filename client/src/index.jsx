@@ -47,7 +47,9 @@ class App extends React.Component {
     }
   }
   componentDidMount() {
-    axios.get('/hostels/2')
+    const hostelID = window.location.pathname.split('/')[2];
+    console.log(hostelID);
+    axios.get(`/api/hostels/${hostelID}`)
       .then((response) => {
         const checkInDate = moment(response.data.checkInDate);
         const checkOutDate = moment(response.data.checkOutDate);
@@ -56,7 +58,7 @@ class App extends React.Component {
           checkOutDate
         });
       });
-    axios.get('/hostels/2/bookings')
+    axios.get(`/hostels/${hostelID}/bookings`)
     .then((response) => {
       const dates = response.data;
       const bookedDates = dates.map((date) => moment(date));
@@ -103,7 +105,7 @@ class App extends React.Component {
       <Availability>
         <Header>Check Availability</Header>
         {newReservation ? this.renderForm() : this.renderSummary()}
-        <Calendar />
+        <Calendar bookedDates={this.state.bookedDates} />
       </Availability>
     )
   }
