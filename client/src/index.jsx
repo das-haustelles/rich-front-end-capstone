@@ -5,11 +5,12 @@ import Calendar from './components/Calendar';
 import DateForm from './components/DateForm';
 import styled from 'styled-components';
 
-const Availability = styled.div`
+const Availability = styled.section`
   background-color: #f4f4f4;
   border-top: 1px solid #e7e7e7;
   border-bottom: 1px solid #e7e7e7;
-  display: block;
+  display: flex;
+  flex-direction: row;
 `
 const Header = styled.h2`
   font-size: 22px;
@@ -17,7 +18,6 @@ const Header = styled.h2`
   font-weight: 300;
   line-height: 32px;
   color: #444444;
-  display: block;
   text-align: start;
 `;
 
@@ -84,6 +84,7 @@ class App extends React.Component {
       <Availability>
         <Header>Check Availability</Header>
         {newReservation ? this.renderForm() : this.renderSummary()}
+        <Calendar />
       </Availability>
     )
   }

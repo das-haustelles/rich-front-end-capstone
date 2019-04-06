@@ -3,12 +3,12 @@ import Day from './Day';
 
 const Week = ({ week, currentDate }) => {
   return (
-    <div>
+    <tr>
       {week.map((date) => (
         <Day date={date.date()}
                  currentDate={currentDate.date()}/>
       ))}
-    </div>
+    </tr>
   )
 }
 

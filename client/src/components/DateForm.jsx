@@ -9,7 +9,7 @@ const Labels = styled.span`
   font-family: Noto, Helvetica, Arial, sans-serif;
   line-height: 12px;
   color: #666666;
-`
+`;
 const SearchButton = styled.button`
   background: #ff622e;
   color: #ffffff;
@@ -17,7 +17,7 @@ const SearchButton = styled.button`
   font-family: Noto, Helvetica, Arial, sans-serif;
   text-align: center;
   border-radius: 3px;
-`
+`;
 const Inputs = styled.input`
   font-family: Noto, Helvetica, Arial, sans-serif;
   font-size: 13px;
@@ -25,11 +25,11 @@ const Inputs = styled.input`
   background: #ffffff;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px inset;
   border-radius: 3px;
-`
+`;
 const Test = styled.div`
   display: flex;
   flex-direction: row;
-`
+`;
 
 class DateForm extends React.Component {
   constructor(props) {

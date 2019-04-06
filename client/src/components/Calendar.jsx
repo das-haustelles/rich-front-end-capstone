@@ -66,12 +66,12 @@ class Calendar extends React.Component {
                 handlePrev={this.handlePrev.bind(this)} />
         <Table>
           <thead>
-            <th>{weekdays.map((day) => (<td>{day}</td>))}</th>
+            <tr>{weekdays.map((day) => (<td>{day}</td>))}</tr>
           </thead>
           <tbody>
             {this.state.dates.map((week) => (
-              <tr><Week week={week}
-                        currentDate={this.state.currentDate} /></tr>
+              <Week week={week}
+                        currentDate={this.state.currentDate} />
             ))}
           </tbody>
         </Table>
