@@ -13,6 +13,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../public')));
 
+app.get('/hostels/:id', (req, res) => {
+  const hostelId = req.params.id;
+  models.hostels.get(hostelId, (hostel) => {
+    res.status(200).send(hostel);
+  });
+});
 
 app.get('/hostels/:id/bookings', (req, res) => {
   const hostelId = req.params.id;
