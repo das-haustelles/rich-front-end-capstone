@@ -77,6 +77,10 @@ class Calendar extends React.Component {
             ))}
           </tbody>
         </Table>
+          <div>
+            <span>Available</span>
+            <span>Sold Out</span>
+          </div>
       </div>
     )
   }

@@ -11,7 +11,7 @@ const Availability = styled.section`
   border-bottom: 1px solid #e7e7e7;
   display: flex;
   flex-direction: row;
-`
+`;
 const Header = styled.h2`
   font-size: 22px;
   font-family: "Noto",Helvetica,Arial,sans-serif;
@@ -20,7 +20,6 @@ const Header = styled.h2`
   color: #444444;
   text-align: start;
 `;
-
 const DateRange = styled.div`
   color: #333333;
   font-size: 12px;
