@@ -11,7 +11,7 @@ const Availability = styled.section`
   border-top: 1px solid #e7e7e7;
   border-bottom: 1px solid #e7e7e7;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 `;
 const Header = styled.h2`
   font-size: 22px;
@@ -42,7 +42,7 @@ class App extends React.Component {
     this.state = {
       checkInDate: moment(),
       checkOutDate: moment().add(3, 'days'),
-      newReservation: false,
+      newReservation: true,
       bookedDates: [],
     }
   }

@@ -8,7 +8,7 @@ const HeaderDisplay = styled.h2`
   font-weight: 700;
   margin: 0 0 10px;
   text-align: center;
-`
+`;
 
 const Header = ({ currentMonth, currentYear, handleNext, handlePrev }) => {
   const monthDisplay = moment().month(currentMonth).format('MMMM');

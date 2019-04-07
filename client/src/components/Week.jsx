@@ -7,7 +7,7 @@ const CalendarWeek = styled.tr`
   color: #444;
   line-height: 22px;
   text-align: center;
-`
+`;
 
 const Week = ({ week, currentDate, bookedDates, month, handleNewDate }) => {
   return (

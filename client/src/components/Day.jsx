@@ -9,7 +9,7 @@ const AvailableDay = styled.td`
   margin: 0;
   padding: 0;
   background: #cef9b6;
-`
+`;
 const BookedDay = styled.td`
   border: 1px solid #ccc;
   color: #444;
@@ -18,7 +18,7 @@ const BookedDay = styled.td`
   margin: 0;
   padding: 0;
   background: #ffa8a8;
-`
+`;
 const OtherDay = styled.td`
   border: 1px solid #ccc;
   color: #e2e2e2;
@@ -27,7 +27,7 @@ const OtherDay = styled.td`
   margin: 0;
   padding: 0;
   background: #e2e2e2;
-`
+`;
 
 const Day = ({ date, currentDate, bookedDates, month, handleNewDate }) => {
   const unavailableDates = bookedDates.map((booking) => booking.format('YYYY-MM-DD'));
