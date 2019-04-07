@@ -54,7 +54,7 @@ class App extends React.Component {
         const checkOutDate = moment(response.data.checkOutDate);
         this.setState({
           checkInDate,
-          checkOutDate
+          checkOutDate,
         });
       });
     axios.get(`/hostels/${hostelID}/bookings`)
