@@ -37,7 +37,8 @@ class Calendar extends React.Component {
     });
   }
 
-  handleNext() {
+  handleNext(e) {
+    e.preventDefault();
     const { year, month } = this.state;
     const dateObject = moment([year, month]).add(1, 'month');
     const nextMonth = dateObject.month();
@@ -50,7 +51,8 @@ class Calendar extends React.Component {
     });
   }
 
-  handlePrev() {
+  handlePrev(e) {
+    e.preventDefault();
     const { year, month } = this.state;
     const dateObject = moment.max(moment(), moment([year, month]).subtract(1, 'month'));
     const prevMonth = dateObject.month();
@@ -101,4 +103,3 @@ class Calendar extends React.Component {
 }
 
 export default Calendar;
-

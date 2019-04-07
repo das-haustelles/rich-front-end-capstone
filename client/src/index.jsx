@@ -15,24 +15,30 @@ const Availability = styled.section`
 const Header = styled.h2`
   font-size: 22px;
   font-family: "Noto",Helvetica,Arial,sans-serif;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 32px;
   color: #444444;
   text-align: start;
 `;
 const DateRange = styled.div`
   color: #333333;
-  font-size: 12px;
+  font-family: Noto, Helvetica, Arial, sans-serif;
+  font-size: 13px;
   line-height: 19px;
-  font-family: "Noto",Helvetica,Arial,sans-serif;
   text-align: start;
 `;
 
 const Change = styled.a`
   margin-left: .25rem;  
   box-sizing: border-box;
-  font-size: .8rem;
+  font-family: Noto, Helvetica, Arial, sans-serif;
+  font-size: 13px;
   color: #ff7547;
+`;
+const Div = styled.div`
+  display: flex;
+  flex-direction: row;
+
 `;
 
 class App extends React.Component {
@@ -83,7 +89,7 @@ class App extends React.Component {
   renderSummary() {
     const { checkInDate, checkOutDate } = this.state;
     return (
-      <div>
+      <Div>
         <div>
           <DateRange>
             <i>Calendar Image Placeholder</i>
@@ -94,7 +100,7 @@ class App extends React.Component {
           <i>Search Image Placeholder</i>
           <span onClick= {() => this.handleNewReservation()}>Change</span>
         </Change>
-    </div>
+      </Div>
     );
   }
 
@@ -122,6 +128,3 @@ class App extends React.Component {
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));
-
-
-

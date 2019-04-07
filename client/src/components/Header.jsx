@@ -13,11 +13,11 @@ const HeaderDisplay = styled.h2`
 const Header = ({ currentMonth, currentYear, handleNext, handlePrev }) => {
   const monthDisplay = moment().month(currentMonth).format('MMMM');
   const banner = monthDisplay + ' ' + currentYear; 
-  return(
+  return (
     <div>
-      <button className="calendar-button button-prev" onClick= {() => handlePrev()}> Prev </button>
+      <button onClick= {(e) => handlePrev(e)}> Prev </button>
       <HeaderDisplay>{banner}</HeaderDisplay>
-      <button className="calendar-button button-next" onClick= {() => handleNext()}> Next </button>
+      <button onClick= {(e) => handleNext(e)}> Next </button>
     </div>
   )
 }

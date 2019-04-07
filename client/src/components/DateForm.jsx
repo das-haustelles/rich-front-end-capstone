@@ -45,7 +45,7 @@ class DateForm extends React.Component {
   }
 
   handleNumberOfGuests(e) {
-    this.setState({ guests: e.target.value});
+    this.setState({ guests: e.target.value });
   }
 
   handleCheckInClick() {
