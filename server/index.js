@@ -12,9 +12,9 @@ const app = express();
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, '../public')));
+app.use('/hostels/:id', express.static(path.join(__dirname, '../public')));
 
-app.get('/hostels/:id', (req, res) => {
+app.get('/api/hostels/:id', (req, res) => {
   const hostelId = req.params.id;
   models.hostels.get(hostelId, (data) => {
     const hostel = {

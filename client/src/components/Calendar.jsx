@@ -1,90 +1,123 @@
 import React from 'react';
-import Week from './Week';
 import moment from 'moment';
+import styled from 'styled-components';
+import Week from './Week';
 import Header from './Header';
 import generateDates from '../../utils/generateDates';
-import styled from 'styled-components';
 
 const Table = styled.table`
+  font-family: Noto, Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  color: #666;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
   background: #fff;
   border: 1px solid #ccc;
   text-align: center;
-  color: #222;
-  font-family: "Noto",Helvetica,Arial,sans-serif;
-  font-size: 13px;
   width: 100%;
   border-collapse: collapse;
-`
+`;
+const Legend = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+const AvailableDiv = styled.div`
+  width: 42px;
+  height: 22px; 
+  background: #cef9b6;
+`;
+
+const SoldOutDiv = styled.div`
+  width: 42px;
+  height: 22px; 
+  background: #ffa8a8;
+`;
+
 class Calendar extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       currentDate: moment(),
       month: moment().month(),
       year: moment().year(),
       dates: [],
-    }
+    };
+    this.handleNext = this.handleNext.bind(this);
+    this.handlePrev = this.handlePrev.bind(this);
   }
 
   componentDidMount() {
-    const dates = generateDates(this.state.year, this.state.month);
+    const { year, month } = this.state;
+    const dates = generateDates(year, month);
     this.setState({
-      dates: dates,
+      dates,
     });
   }
 
-  handleNext() {
-    const dateObject = moment([this.state.year, this.state.month]).add(1, 'month');
+  handleNext(e) {
+    e.preventDefault();
+    const { year, month } = this.state;
+    const dateObject = moment([year, month]).add(1, 'month');
     const nextMonth = dateObject.month();
     const currentYear = dateObject.year();
     const dates = generateDates(currentYear, nextMonth);
     this.setState({
       month: nextMonth,
       year: currentYear,
-      dates: dates,
+      dates,
     });
   }
 
-  handlePrev() {
-    const dateObject = moment.max(moment(), moment([this.state.year, this.state.month]).subtract(1, 'month'));
+  handlePrev(e) {
+    e.preventDefault();
+    const { year, month } = this.state;
+    const dateObject = moment.max(moment(), moment([year, month]).subtract(1, 'month'));
     const prevMonth = dateObject.month();
     const currentYear = dateObject.year();
     const dates = generateDates(currentYear, prevMonth);
     this.setState({
       month: prevMonth,
       year: currentYear,
-      dates: dates,
+      dates,
     });
   }
 
   render() {
     const weekdays = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+    const {
+      year, month, currentDate, dates,
+    } = this.state;
+    const { bookedDates, handleNewDate } = this.props;
 
-    return(
+    return (
       <div>
-        <Header currentMonth={this.state.month}
-                currentYear={this.state.year}
-                handleNext={this.handleNext.bind(this)}
-                handlePrev={this.handlePrev.bind(this)} />
+        <Header
+          currentMonth={month}
+          currentYear={year}
+          handleNext={this.handleNext}
+          handlePrev={this.handlePrev}
+        />
         <Table>
           <thead>
-            <tr>{weekdays.map((day) => (<td>{day}</td>))}</tr>
+            <tr>{weekdays.map(day => <td>{day}</td>)}</tr>
           </thead>
           <tbody>
-            {this.state.dates.map((week) => (
+            {dates.map(week => 
               <Week week={week}
-                        currentDate={this.state.currentDate} />
-            ))}
+                month={month}
+                currentDate={currentDate}
+                bookedDates={bookedDates}
+                handleNewDate={handleNewDate} />)}
           </tbody>
         </Table>
-          <div>
-            <span>Available</span>
-            <span>Sold Out</span>
-          </div>
+        <Legend>
+          <AvailableDiv>
+          </AvailableDiv>
+          <SoldOutDiv>
+          </SoldOutDiv>
+        </Legend>
       </div>
-    )
+    );
   }
 }
 
 export default Calendar;
-

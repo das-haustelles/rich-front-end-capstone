@@ -2,31 +2,70 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Label = styled.label`
-  font-size: .8125rem;
-  color: #333;
-  padding: .5rem;
-  margin: .125rem .5rem;
+  font-family: Noto, Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  color: #666;
+  padding: 10px 20px;
+  margin: .125rem;
   border: .0625rem solid #ccc;
   background-color: #fff;
   text-align: center;
   width: 100%;
   white-space: nowrap;
   border-radius: .1875rem;
-`
+`;
 
 const List = styled.li`
-  width: 16.66667%;
+  height: 37px;
   font-family: "Noto",Helvetica,Arial,sans-serif;
-  padding: .5rem .5rem 0;
-  float: left;
-  box-sizing: border-box;
   list-style: none;
-`
+  width: 20%;
+`;
 const Input = styled.input`
   position: absolute;
   visibility: hidden;
-`
-
+  width: 100%;
+`;
+const FormFields = styled.div`
+  width: 50%;
+  padding: 0 1rem 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: centered;
+`;
+const Labels = styled.span`
+  font-size: 12px;
+  font-weight: bold;
+  font-family: Noto, Helvetica, Arial, sans-serif;
+  line-height: 12px;
+  color: #666666;
+  width: 100%;
+  margin: 8px 0;
+`;
+const Ul = styled.ul`
+  width: 100%;
+  padding: 0 1rem 0 0;
+  margin: 8px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: centered;
+`;
+const Section = styled.section`
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+`;
+const Select = styled.select`
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+  background-color: #fff;
+  border: 1px solid #bbb;
+  color: #666;
+  font-size: .8rem;
+  background-position-x: 100%;
+  border-radius: 3px;
+  width: 100%;
+  height: 37px;
+`;
 const GroupForm = () => {
   const options = [
     'Holiday with Friends',
@@ -36,32 +75,32 @@ const GroupForm = () => {
     'Business Trip',
     'Stag/Hen/Bachelor Party',
     'Sports Group',
-    'Cultural Group'
+    'Cultural Group',
   ];
   const ages = ['0-12', '12-18', '18-21', '21-35', '35-50', '50+'];
   return (
-    <div className="search-form-groups">
-        <div className="search-form-row">
-          <span className="form-label">Group Types</span>
-          <select>
-            <option>Group Type</option>
-            {options.map((option) => (
-              <option value={option}>{option}</option>
-            ))}
-          </select>
-        </div>
-        <div className="search-form-list">
-          <span className="form-label">Age Ranges</span>
-          <ul className="age-ranges-list">
-            {ages.map((age) =>(
-              <List>
-                <Input id={"58-age-ranges-" + ages.indexOf(age)} type="checkbox" value={age}></Input>
-                <Label htmlFor={"58-age-ranges-" + ages.indexOf(age)}>{age}</Label>
-              </List>
-            ))}
-          </ul>
-        </div>
-      </div>
+    <Section>
+      <FormFields>
+        <Labels>Group Types</Labels>
+        <Select>
+          <option>Group Type</option>
+          {options.map((option) => (
+            <option value={option}>{option}</option>
+          ))}
+        </Select>
+      </FormFields>
+      <FormFields>
+        <Labels>Age Ranges</Labels>
+        <Ul className="age-ranges-list">
+          {ages.map((age) =>(
+            <List>
+              <Input id={"58-age-ranges-" + ages.indexOf(age)} type="checkbox" value={age}></Input>
+              <Label htmlFor={"58-age-ranges-" + ages.indexOf(age)}>{age}</Label>
+            </List>
+          ))}
+        </Ul>
+      </FormFields>
+    </Section>
   )
 }
 

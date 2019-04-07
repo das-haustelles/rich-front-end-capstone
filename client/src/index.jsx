@@ -1,115 +1,130 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import moment from 'moment'; 
+import moment from 'moment';
 import axios from 'axios';
-import Calendar from './components/Calendar';
-import DateForm from './components/DateForm';
 import styled from 'styled-components';
+import DateForm from './components/DateForm';
 
 const Availability = styled.section`
   background-color: #f4f4f4;
   border-top: 1px solid #e7e7e7;
   border-bottom: 1px solid #e7e7e7;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 `;
 const Header = styled.h2`
   font-size: 22px;
   font-family: "Noto",Helvetica,Arial,sans-serif;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 32px;
   color: #444444;
   text-align: start;
 `;
 const DateRange = styled.div`
   color: #333333;
-  font-size: 12px;
+  font-family: Noto, Helvetica, Arial, sans-serif;
+  font-size: 13px;
   line-height: 19px;
-  font-family: "Noto",Helvetica,Arial,sans-serif;
   text-align: start;
 `;
 
 const Change = styled.a`
   margin-left: .25rem;  
   box-sizing: border-box;
-  font-size: .8rem;
+  font-family: Noto, Helvetica, Arial, sans-serif;
+  font-size: 13px;
   color: #ff7547;
+`;
+const Div = styled.div`
+  display: flex;
+  flex-direction: row;
+
 `;
 
 class App extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       checkInDate: moment(),
       checkOutDate: moment().add(3, 'days'),
-      newReservation: false,
+      newReservation: true,
       bookedDates: [],
-    }
+    };
+    this.handleNewDate = this.handleNewDate.bind(this);
   }
+
   componentDidMount() {
-    axios.get('/hostels/2')
+    const hostelID = window.location.pathname.split('/')[2];
+    axios.get(`/api/hostels/${hostelID}`)
       .then((response) => {
         const checkInDate = moment(response.data.checkInDate);
         const checkOutDate = moment(response.data.checkOutDate);
         this.setState({
           checkInDate,
-          checkOutDate
+          checkOutDate,
         });
       });
-    axios.get('/hostels/2/bookings')
-    .then((response) => {
-      const dates = response.data;
-      const bookedDates = dates.map((date) => moment(date));
-      this.setState({
-        bookedDates
+    axios.get(`/hostels/${hostelID}/bookings`)
+      .then((response) => {
+        const dates = response.data;
+        const bookedDates = dates.map(date => moment(date));
+        this.setState({
+          bookedDates,
+        });
       });
-    });
   }
 
   handleNewReservation() {
     this.setState({ newReservation: true });
   }
 
+  handleNewDate(date) {
+    const newDate = moment(date);
+    this.setState({
+      checkInDate: newDate,
+      checkOutDate: moment(newDate).add(1, 'days'),
+    });
+  }
+
   renderSummary() {
-    return(
-      <div>
-      <div>
-        <DateRange>
-          <i>Calendar Image Placeholder</i>
-          <span>{this.state.checkInDate.format('ddd D MMM YYYY-') + this.state.checkOutDate.format('ddd D MMM YYYY') }</span>
-        </DateRange>
-      </div>
-      <Change>
-        <i>Search Image Placeholder</i>
-        <span onClick= {() => this.handleNewReservation()}>Change</span>
-      </Change>
-    </div>
-    )
+    const { checkInDate, checkOutDate } = this.state;
+    return (
+      <Div>
+        <div>
+          <DateRange>
+            <i>Calendar Image Placeholder</i>
+            <span>{checkInDate.format('ddd D MMM YYYY-') + checkOutDate.format('ddd D MMM YYYY') }</span>
+          </DateRange>
+        </div>
+        <Change>
+          <i>Search Image Placeholder</i>
+          <span onClick= {() => this.handleNewReservation()}>Change</span>
+        </Change>
+      </Div>
+    );
   }
 
   renderForm() {
-    return(
+    const { checkInDate, checkOutDate, bookedDates } = this.state;
+    return (
       <div>
-        <DateForm checkIn= {this.state.checkInDate} 
-                  checkOut={this.state.checkOutDate} 
-                  bookedDates= {this.state.bookedDates} />
+        <DateForm checkIn= {checkInDate} 
+                  checkOut={checkOutDate} 
+                  bookedDates= {bookedDates}
+                  handleNewDate={this.handleNewDate}/>
       </div>
-    )
+    );
   }
 
   render() {
-    const newReservation = this.state.newReservation;
-    return(
+    const { newReservation } = this.state;
+    return (
       <Availability>
         <Header>Check Availability</Header>
         {newReservation ? this.renderForm() : this.renderSummary()}
-        <Calendar />
       </Availability>
-    )
+    );
   }
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));
-
-
-
