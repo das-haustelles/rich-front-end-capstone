@@ -1,7 +1,7 @@
 import React from 'react';
-import GuestsDropDown from './GuestsDropDown';
-import GroupForm from './GroupForm';
 import styled from 'styled-components';
+import GroupForm from './GroupForm';
+import GuestsDropDown from './GuestsDropDown';
 import Calendar from './Calendar';
 import CheckInField from './CheckInField';
 import CheckOutField from './CheckOutField';
@@ -36,27 +36,50 @@ class DateForm extends React.Component {
     super(props);
     this.state = {
       guests: 9,
+      displayCheckInCalendar: false,
+      displayCheckOutCalendar: false,
     };
+    this.handleCheckInClick = this.handleCheckInClick.bind(this);
+    this.handleCheckOutClick = this.handleCheckOutClick.bind(this);
+    this.handleNumberOfGuests = this.handleNumberOfGuests.bind(this);
   }
 
   handleNumberOfGuests(e) {
     this.setState({ guests: e.target.value});
   }
 
+  handleCheckInClick() {
+    this.setState({
+      displayCheckInCalendar: true,
+      displayCheckOutCalendar: false,
+    });
+  }
+
+  handleCheckOutClick() {
+    this.setState({
+      displayCheckInCalendar: false,
+      displayCheckOutCalendar: true,
+    });
+  }
+
   render() {
-    const { guests } = this.state;
+    const { guests, displayCheckInCalendar, displayCheckOutCalendar } = this.state;
     const isLargeParty = guests >= 9;
     return (
       <div>
         <Form>
           <FormFields>
-            <CheckInField checkIn={this.props.checkIn}/>
+            <CheckInField checkIn={this.props.checkIn}
+              handleCheckInClick={this.handleCheckInClick} />
+            {displayCheckInCalendar ? <Calendar bookedDates= {this.props.bookedDates} handleNewDate={this.props.handleNewDate}/> : <React.Fragment></React.Fragment>}
           </FormFields>
           <FormFields>
-            <CheckOutField checkOut={this.props.checkOut} />
+            <CheckOutField checkOut={this.props.checkOut}
+              handleCheckOutClick={this.handleCheckOutClick} />
+            {displayCheckOutCalendar ? <Calendar bookedDates= {this.props.bookedDates} handleNewDate={this.props.handleNewDate}/> : <React.Fragment></React.Fragment>}
           </FormFields>
           <FormFields>
-            <GuestsDropDown handleNumberOfGuests={this.handleNumberOfGuests.bind(this)}/>
+            <GuestsDropDown handleNumberOfGuests={this.handleNumberOfGuests} />
           </FormFields>
           <FormFields>
             <span></span>

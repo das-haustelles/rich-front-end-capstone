@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import moment from 'moment'; 
+import moment from 'moment';
 import axios from 'axios';
-import Calendar from './components/Calendar';
-import DateForm from './components/DateForm';
 import styled from 'styled-components';
+import DateForm from './components/DateForm';
 
 const Availability = styled.section`
   background-color: #f4f4f4;
@@ -38,14 +37,16 @@ const Change = styled.a`
 
 class App extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       checkInDate: moment(),
       checkOutDate: moment().add(3, 'days'),
       newReservation: true,
       bookedDates: [],
-    }
+    };
+    this.handleNewDate = this.handleNewDate.bind(this);
   }
+
   componentDidMount() {
     const hostelID = window.location.pathname.split('/')[2];
     axios.get(`/api/hostels/${hostelID}`)
@@ -58,13 +59,13 @@ class App extends React.Component {
         });
       });
     axios.get(`/hostels/${hostelID}/bookings`)
-    .then((response) => {
-      const dates = response.data;
-      const bookedDates = dates.map((date) => moment(date));
-      this.setState({
-        bookedDates
+      .then((response) => {
+        const dates = response.data;
+        const bookedDates = dates.map(date => moment(date));
+        this.setState({
+          bookedDates,
+        });
       });
-    });
   }
 
   handleNewReservation() {
@@ -80,42 +81,43 @@ class App extends React.Component {
   }
 
   renderSummary() {
-    return(
+    const { checkInDate, checkOutDate } = this.state;
+    return (
       <div>
-      <div>
-        <DateRange>
-          <i>Calendar Image Placeholder</i>
-          <span>{this.state.checkInDate.format('ddd D MMM YYYY-') + this.state.checkOutDate.format('ddd D MMM YYYY') }</span>
-        </DateRange>
-      </div>
-      <Change>
-        <i>Search Image Placeholder</i>
-        <span onClick= {() => this.handleNewReservation()}>Change</span>
-      </Change>
+        <div>
+          <DateRange>
+            <i>Calendar Image Placeholder</i>
+            <span>{checkInDate.format('ddd D MMM YYYY-') + checkOutDate.format('ddd D MMM YYYY') }</span>
+          </DateRange>
+        </div>
+        <Change>
+          <i>Search Image Placeholder</i>
+          <span onClick= {() => this.handleNewReservation()}>Change</span>
+        </Change>
     </div>
-    )
+    );
   }
 
   renderForm() {
-    return(
+    const { checkInDate, checkOutDate, bookedDates } = this.state;
+    return (
       <div>
-        <DateForm checkIn= {this.state.checkInDate} 
-                  checkOut={this.state.checkOutDate} 
-                  bookedDates= {this.state.bookedDates} />
+        <DateForm checkIn= {checkInDate} 
+                  checkOut={checkOutDate} 
+                  bookedDates= {bookedDates}
+                  handleNewDate={this.handleNewDate}/>
       </div>
-    )
+    );
   }
 
   render() {
-    const newReservation = this.state.newReservation;
-    return(
+    const { newReservation } = this.state;
+    return (
       <Availability>
         <Header>Check Availability</Header>
         {newReservation ? this.renderForm() : this.renderSummary()}
-        <Calendar bookedDates={this.state.bookedDates} 
-                  handleNewDate={this.handleNewDate.bind(this)}/>
       </Availability>
-    )
+    );
   }
 }
 

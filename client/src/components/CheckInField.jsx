@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Calendar from './Calendar';
 
 const Inputs = styled.input`
   font-family: Noto, Helvetica, Arial, sans-serif;
@@ -23,11 +24,11 @@ const Labels = styled.span`
   margin-bottom: 8px;
 `;
 
-const CheckInField = ({ checkIn }) => {
+const CheckInField = ({ checkIn, handleCheckInClick }) => {
   return (
     <React.Fragment>
       <Labels>Check In</Labels>
-      <Inputs value={checkIn.format('DD MMM YYYY')} type="text" readOnly="readonly" className="datepicker"></Inputs>
+      <Inputs value={checkIn.format('DD MMM YYYY')} type="text" readOnly="readonly" onClick={() => handleCheckInClick()}></Inputs>
     </React.Fragment>
   );
 };

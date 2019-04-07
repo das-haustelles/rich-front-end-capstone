@@ -6,12 +6,13 @@ import Header from './Header';
 import generateDates from '../../utils/generateDates';
 
 const Table = styled.table`
+  font-family: Noto, Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  color: #666;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
   background: #fff;
   border: 1px solid #ccc;
   text-align: center;
-  color: #222;
-  font-family: "Noto",Helvetica,Arial,sans-serif;
-  font-size: 13px;
   width: 100%;
   border-collapse: collapse;
 `;
@@ -24,6 +25,8 @@ class Calendar extends React.Component {
       year: moment().year(),
       dates: [],
     };
+    this.handleNext = this.handleNext.bind(this);
+    this.handlePrev = this.handlePrev.bind(this);
   }
 
   componentDidMount() {
@@ -72,8 +75,8 @@ class Calendar extends React.Component {
         <Header
           currentMonth={month}
           currentYear={year}
-          handleNext={this.handleNext.bind(this)}
-          handlePrev={this.handlePrev.bind(this)}
+          handleNext={this.handleNext}
+          handlePrev={this.handlePrev}
         />
         <Table>
           <thead>
@@ -85,7 +88,7 @@ class Calendar extends React.Component {
                 month={month}
                 currentDate={currentDate}
                 bookedDates={bookedDates}
-                handleNewDate={handleNewDate}/>)}
+                handleNewDate={handleNewDate} />)}
           </tbody>
         </Table>
         <div>
