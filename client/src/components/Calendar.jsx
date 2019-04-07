@@ -16,6 +16,22 @@ const Table = styled.table`
   width: 100%;
   border-collapse: collapse;
 `;
+const Legend = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+const AvailableDiv = styled.div`
+  width: 42px;
+  height: 22px; 
+  background: #cef9b6;
+`;
+
+const SoldOutDiv = styled.div`
+  width: 42px;
+  height: 22px; 
+  background: #ffa8a8;
+`;
+
 class Calendar extends React.Component {
   constructor(props) {
     super(props);
@@ -93,10 +109,12 @@ class Calendar extends React.Component {
                 handleNewDate={handleNewDate} />)}
           </tbody>
         </Table>
-        <div>
-          <span>Available</span>
-          <span>Sold Out</span>
-        </div>
+        <Legend>
+          <AvailableDiv>
+          </AvailableDiv>
+          <SoldOutDiv>
+          </SoldOutDiv>
+        </Legend>
       </div>
     );
   }
