@@ -20,5 +20,6 @@ module.exports = {
         "react"
     ],
     "rules": {
+        "react/jsx-wrap-multilines": false
     }
 };
