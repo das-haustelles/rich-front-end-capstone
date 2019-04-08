@@ -6,7 +6,7 @@ import Header from './Header';
 import generateDates from '../../utils/generateDates';
 
 const Table = styled.table`
-  font-family: Noto, Helvetica, Arial, sans-serif;
+  font-family: 'Noto Sans', Helvetica, Arial, sans-serif;
   font-size: 13px;
   color: #666;
   box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
@@ -16,22 +16,10 @@ const Table = styled.table`
   width: 100%;
   border-collapse: collapse;
 `;
-const Legend = styled.div`
-  display: flex;
-  flex-direction: row;
+const Td = styled.td`
+  border: 1px solid #ccc;
+  background-color: #f4f4f4;
 `;
-const AvailableDiv = styled.div`
-  width: 42px;
-  height: 22px; 
-  background: #cef9b6;
-`;
-
-const SoldOutDiv = styled.div`
-  width: 42px;
-  height: 22px; 
-  background: #ffa8a8;
-`;
-
 class Calendar extends React.Component {
   constructor(props) {
     super(props);
@@ -43,12 +31,17 @@ class Calendar extends React.Component {
     };
     this.handleNext = this.handleNext.bind(this);
     this.handlePrev = this.handlePrev.bind(this);
+    this.handleDateSelection = this.handleDateSelection.bind(this);
   }
 
   componentDidMount() {
-    const { year, month } = this.state;
+    const { checkIn } = this.props;
+    const year = moment(checkIn).year();
+    const month = moment(checkIn).month();
     const dates = generateDates(year, month);
     this.setState({
+      year,
+      month,
       dates,
     });
   }
@@ -81,12 +74,23 @@ class Calendar extends React.Component {
     });
   }
 
+  handleDateSelection(date) {
+    const month = moment(date).month();
+    const year = moment(date).year();
+    const dates = generateDates(year, month);
+    this.setState({
+      month,
+      year,
+      dates,
+    });
+  }
+
   render() {
     const weekdays = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
     const {
       year, month, currentDate, dates,
     } = this.state;
-    const { bookedDates, handleNewDate } = this.props;
+    const { bookedDates, handleNewDate, checkIn } = this.props;
 
     return (
       <div>
@@ -98,7 +102,7 @@ class Calendar extends React.Component {
         />
         <Table>
           <thead>
-            <tr>{weekdays.map(day => <td>{day}</td>)}</tr>
+            <tr>{weekdays.map(day => <Td>{day}</Td>)}</tr>
           </thead>
           <tbody>
             {dates.map(week => 
@@ -106,15 +110,11 @@ class Calendar extends React.Component {
                 month={month}
                 currentDate={currentDate}
                 bookedDates={bookedDates}
-                handleNewDate={handleNewDate} />)}
+                handleNewDate={handleNewDate}
+                handleDateSelection={this.handleDateSelection}
+                checkIn={checkIn}/>)}
           </tbody>
         </Table>
-        <Legend>
-          <AvailableDiv>
-          </AvailableDiv>
-          <SoldOutDiv>
-          </SoldOutDiv>
-        </Legend>
       </div>
     );
   }
