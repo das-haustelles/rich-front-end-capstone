@@ -17,7 +17,17 @@
 
 ## Usage
 
-> Some usage instructions
+- Create a config.js in the /db/utils directory (remember to not push this file) which exports your MYSql username (var userName = 'your username') and corresponding password (var userPass = 'your username')
+  > example: 
+  > const userName = 'your username';
+  > const userPass = 'your password';
+  >
+  > module.exports.userName = userName;
+  > module.exports.userPass = userPass;
+
+- From the root directory, start the server with 'npm run start', seed the db with 'npm run seedDB'  and create the bundle.js with 'npm run build'
+
+- Navigate to localhost:3001/hostels/:id where ':id' is a number of the hostel from 1 - 100
 
 ## Requirements
 
