@@ -49,8 +49,12 @@ class App extends React.Component {
       checkOutDate: moment().add(3, 'days'),
       newReservation: true,
       bookedDates: [],
+      displayCheckInCalendar: false,
+      displayCheckOutCalendar: false,
     };
     this.handleNewDate = this.handleNewDate.bind(this);
+    this.handleCheckInClick = this.handleCheckInClick.bind(this);
+    this.handleCheckOutClick = this.handleCheckOutClick.bind(this);
   }
 
   componentDidMount() {
@@ -83,6 +87,22 @@ class App extends React.Component {
     this.setState({
       checkInDate: newDate,
       checkOutDate: moment(newDate).add(1, 'days'),
+      displayCheckInCalendar: false,
+      displayCheckOutCalendar: false,
+    });
+  }
+
+  handleCheckInClick() {
+    this.setState({
+      displayCheckInCalendar: true,
+      displayCheckOutCalendar: false,
+    });
+  }
+
+  handleCheckOutClick() {
+    this.setState({
+      displayCheckInCalendar: false,
+      displayCheckOutCalendar: true,
     });
   }
 
@@ -105,13 +125,19 @@ class App extends React.Component {
   }
 
   renderForm() {
-    const { checkInDate, checkOutDate, bookedDates } = this.state;
+    const {
+      checkInDate, checkOutDate, bookedDates, displayCheckInCalendar, displayCheckOutCalendar,
+    } = this.state;
     return (
       <div>
         <DateForm checkIn= {checkInDate} 
                   checkOut={checkOutDate} 
                   bookedDates= {bookedDates}
-                  handleNewDate={this.handleNewDate}/>
+                  handleNewDate={this.handleNewDate}
+                  displayCheckInCalendar={displayCheckInCalendar} 
+                  displayCheckOutCalendar={displayCheckOutCalendar}
+                  handleCheckInClick={this.handleCheckInClick} 
+                  handleCheckOutClick={this.handleCheckOutClick} />
       </div>
     );
   }
