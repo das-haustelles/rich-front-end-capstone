@@ -12,6 +12,9 @@ const Inputs = styled.input`
   border-radius: 3px;
   width: 100%;
   height: 37px;
+  &:hover {
+    cursor: pointer;
+  };
 `;
 
 const Labels = styled.span`

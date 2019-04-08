@@ -12,6 +12,7 @@ const AvailableDay = styled.td`
   background: #cef9b6;
   &:hover {
     background: #a8cc94;
+    cursor: pointer;
   }
 `;
 const BookedDay = styled.td`
@@ -24,6 +25,7 @@ const BookedDay = styled.td`
   background: #ffa8a8;
   &:hover {
     background: #db8c8c;
+    cursor: pointer;
   }
 `;
 const CurrentDay = styled.td`
@@ -45,6 +47,7 @@ const OtherDay = styled.td`
   background: #e2e2e2;
   &:hover {
     background: #efe1c9;
+    cursor: pointer;
   }
 `;
 

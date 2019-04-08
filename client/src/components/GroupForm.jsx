@@ -16,6 +16,7 @@ const Label = styled.label`
   &:hover {
     border: .0625rem solid #ff7547;
     color: #ff7547;
+    cursor: pointer;
   }
 `;
 

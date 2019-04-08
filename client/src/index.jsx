@@ -39,6 +39,7 @@ const Change = styled.a`
   padding-left: 8px;
   &:hover {
     color: #ff4000;
+    cursor: pointer;
   }
 `;
 const Div = styled.div`

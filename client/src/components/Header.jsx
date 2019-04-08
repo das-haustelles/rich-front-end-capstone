@@ -21,6 +21,10 @@ const Span = styled.span`
   font-size: 13px;
   color: #666;
   text-align: center;
+  &:hover {
+    color: #ff7547;
+    cursor: pointer;
+  }
 `;
 
 const Header = ({ currentMonth, currentYear, handleNext, handlePrev }) => {
