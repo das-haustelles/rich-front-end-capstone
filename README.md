@@ -28,6 +28,7 @@
   >
   >   module.exports.userPass = userPass;
 
+- Ensure a database named 'fec' is available in your MYSql database
 - From the root directory, start the server with 'npm run start', seed the db with 'npm run seedDB'  and create the bundle.js with 'npm run build'
 
 - Navigate to localhost:3001/hostels/:id where ':id' is a number of the hostel from 1 - 100
