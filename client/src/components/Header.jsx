@@ -6,7 +6,6 @@ const HeaderDisplay = styled.h2`
   font-family: Noto, Helvetica, Arial, sans-serif;
   font-size: 13px;
   color: #666;
-  margin: 0 0 10px;
   text-align: center;
 `;
 

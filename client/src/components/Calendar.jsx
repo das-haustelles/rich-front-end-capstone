@@ -43,12 +43,17 @@ class Calendar extends React.Component {
     };
     this.handleNext = this.handleNext.bind(this);
     this.handlePrev = this.handlePrev.bind(this);
+    this.handleDateSelection = this.handleDateSelection.bind(this);
   }
 
   componentDidMount() {
-    const { year, month } = this.state;
+    const { checkIn } = this.props;
+    const year = moment(checkIn).year();
+    const month = moment(checkIn).month();
     const dates = generateDates(year, month);
     this.setState({
+      year,
+      month,
       dates,
     });
   }
@@ -81,6 +86,17 @@ class Calendar extends React.Component {
     });
   }
 
+  handleDateSelection(date) {
+    const month = moment(date).month();
+    const year = moment(date).year();
+    const dates = generateDates(year, month);
+    this.setState({
+      month,
+      year,
+      dates,
+    });
+  }
+
   render() {
     const weekdays = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
     const {
@@ -106,7 +122,8 @@ class Calendar extends React.Component {
                 month={month}
                 currentDate={currentDate}
                 bookedDates={bookedDates}
-                handleNewDate={handleNewDate} />)}
+                handleNewDate={handleNewDate}
+                handleDateSelection={this.handleDateSelection}/>)}
           </tbody>
         </Table>
         <Legend>

@@ -64,19 +64,22 @@ class DateForm extends React.Component {
 
   render() {
     const { guests, displayCheckInCalendar, displayCheckOutCalendar } = this.state;
+    const { checkIn, checkOut, bookedDates, handleNewDate } = this.props;
     const isLargeParty = guests >= 9;
     return (
       <div>
         <Form>
           <FormFields>
-            <CheckInField checkIn={this.props.checkIn}
+            <CheckInField
+              checkIn={checkIn}
               handleCheckInClick={this.handleCheckInClick} />
-            {displayCheckInCalendar ? <Calendar bookedDates= {this.props.bookedDates} handleNewDate={this.props.handleNewDate}/> : <React.Fragment></React.Fragment>}
+            {displayCheckInCalendar ? <Calendar bookedDates={bookedDates} handleNewDate={handleNewDate} checkIn={checkIn} /> : <React.Fragment></React.Fragment>}
           </FormFields>
           <FormFields>
-            <CheckOutField checkOut={this.props.checkOut}
+            <CheckOutField
+              checkOut={checkOut}
               handleCheckOutClick={this.handleCheckOutClick} />
-            {displayCheckOutCalendar ? <Calendar bookedDates= {this.props.bookedDates} handleNewDate={this.props.handleNewDate}/> : <React.Fragment></React.Fragment>}
+            {displayCheckOutCalendar ? <Calendar bookedDates={bookedDates} handleNewDate={handleNewDate} checkIn={checkIn} /> : <React.Fragment></React.Fragment>}
           </FormFields>
           <FormFields>
             <GuestsDropDown handleNumberOfGuests={this.handleNumberOfGuests} />
