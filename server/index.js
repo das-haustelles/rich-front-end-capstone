@@ -6,7 +6,7 @@ const moment = require('moment');
 const db = require('../db/index');
 const models = require('./models/models');
 
-const PORT = process.env.port || 3000;
+const PORT = process.env.port || 3001;
 const app = express();
 
 app.use(morgan('dev'));
