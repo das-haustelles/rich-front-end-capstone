@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import Calendar from './Calendar';
 
 const Inputs = styled.input`
   font-family: Noto, Helvetica, Arial, sans-serif;

@@ -13,7 +13,7 @@ const HeaderDisplay = styled.h2`
 const Div = styled.div`
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
 `;
 
@@ -35,4 +35,4 @@ const Header = ({ currentMonth, currentYear, handleNext, handlePrev }) => {
   )
 }
 
-export default Header; 
+export default Header;

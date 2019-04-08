@@ -9,6 +9,9 @@ const AvailableDay = styled.td`
   margin: 0;
   padding: 0;
   background: #cef9b6;
+  &:hover {
+    background: #a8cc94;
+  }
 `;
 const BookedDay = styled.td`
   border: 1px solid #ccc;
@@ -18,15 +21,21 @@ const BookedDay = styled.td`
   margin: 0;
   padding: 0;
   background: #ffa8a8;
+  &:hover {
+    background: #db8c8c;
+  }
 `;
 const OtherDay = styled.td`
   border: 1px solid #ccc;
-  color: #e2e2e2;
+  color: #ccc9c9;
   line-height: 22px;
   text-align: center;
   margin: 0;
   padding: 0;
   background: #e2e2e2;
+  &:hover {
+    background: #efe1c9;
+  }
 `;
 
 const Day = ({ date, currentDate, bookedDates, month, handleNewDate }) => {

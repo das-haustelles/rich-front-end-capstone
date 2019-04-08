@@ -35,7 +35,7 @@ class DateForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      guests: 1,
+      guests: 9,
       displayCheckInCalendar: false,
       displayCheckOutCalendar: false,
     };

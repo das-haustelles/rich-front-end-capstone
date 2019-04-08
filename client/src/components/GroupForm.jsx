@@ -13,6 +13,10 @@ const Label = styled.label`
   width: 100%;
   white-space: nowrap;
   border-radius: .1875rem;
+  &:hover {
+    border: .0625rem solid #ff7547;
+    color: #ff7547;
+  }
 `;
 
 const List = styled.li`
@@ -48,7 +52,7 @@ const Ul = styled.ul`
   margin: 8px 0;
   display: flex;
   flex-direction: row;
-  justify-content: centered;
+  justify-content: space-between;
 `;
 const Section = styled.section`
   display: flex;
@@ -81,7 +85,7 @@ const GroupForm = () => {
   return (
     <Section>
       <FormFields>
-        <Labels>Group Types</Labels>
+        <Labels>Group Type</Labels>
         <Select>
           <option>Group Type</option>
           {options.map((option) => (
