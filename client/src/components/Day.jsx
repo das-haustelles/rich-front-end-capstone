@@ -48,17 +48,17 @@ const OtherDay = styled.td`
   }
 `;
 
-const Day = ({ date, currentDate, bookedDates, month, handleNewDate, handleDateSelection }) => {
+const Day = ({ date, currentDate, bookedDates, month, handleNewDate, handleDateSelection, checkIn }) => {
   const unavailableDates = bookedDates.map((booking) => booking.format('YYYY-MM-DD'));
   const isBookedDate = unavailableDates.indexOf(date.format('YYYY-MM-DD')) === -1;
-  const isCurrentDate = date.format('YYYY-MM-DD') === currentDate.format('YYYY-MM-DD');
+  const isCheckInDate = date.format('YYYY-MM-DD') === checkIn.format('YYYY-MM-DD');
   const isOtherDay = date.month() !== month || date.isBefore(moment());
 
   if (isOtherDay) {
     return <OtherDay key={date.date()} onClick={(e) => { handleNewDate(date); handleDateSelection(date); }}>{date.date()}</OtherDay>
   } else if (!isBookedDate) {
     return <BookedDay key={date.date()} onClick={(e) => { handleNewDate(date); handleDateSelection(date); }}>{date.date()}</BookedDay>
-  } else if (isCurrentDate) {
+  } else if (isCheckInDate) {
     return <CurrentDay key={date.date()} onClick={(e) => { handleNewDate(date); handleDateSelection(date); }}>{date.date()}</CurrentDay>
   } else {
     return <AvailableDay key={date.date()} onClick={(e) => { handleNewDate(date); handleDateSelection(date); }}>{date.date()}</AvailableDay>

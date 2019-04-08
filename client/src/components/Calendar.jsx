@@ -16,22 +16,10 @@ const Table = styled.table`
   width: 100%;
   border-collapse: collapse;
 `;
-const Legend = styled.div`
-  display: flex;
-  flex-direction: row;
+const Td = styled.td`
+  border: 1px solid #ccc;
+  background-color: #f4f4f4;
 `;
-const AvailableDiv = styled.div`
-  width: 42px;
-  height: 22px; 
-  background: #cef9b6;
-`;
-
-const SoldOutDiv = styled.div`
-  width: 42px;
-  height: 22px; 
-  background: #ffa8a8;
-`;
-
 class Calendar extends React.Component {
   constructor(props) {
     super(props);
@@ -102,7 +90,7 @@ class Calendar extends React.Component {
     const {
       year, month, currentDate, dates,
     } = this.state;
-    const { bookedDates, handleNewDate } = this.props;
+    const { bookedDates, handleNewDate, checkIn } = this.props;
 
     return (
       <div>
@@ -114,7 +102,7 @@ class Calendar extends React.Component {
         />
         <Table>
           <thead>
-            <tr>{weekdays.map(day => <td>{day}</td>)}</tr>
+            <tr>{weekdays.map(day => <Td>{day}</Td>)}</tr>
           </thead>
           <tbody>
             {dates.map(week => 
@@ -123,15 +111,10 @@ class Calendar extends React.Component {
                 currentDate={currentDate}
                 bookedDates={bookedDates}
                 handleNewDate={handleNewDate}
-                handleDateSelection={this.handleDateSelection}/>)}
+                handleDateSelection={this.handleDateSelection}
+                checkIn={checkIn}/>)}
           </tbody>
         </Table>
-        <Legend>
-          <AvailableDiv>
-          </AvailableDiv>
-          <SoldOutDiv>
-          </SoldOutDiv>
-        </Legend>
       </div>
     );
   }

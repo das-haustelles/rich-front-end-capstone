@@ -9,7 +9,7 @@ const CalendarWeek = styled.tr`
   text-align: center;
 `;
 
-const Week = ({ week, currentDate, bookedDates, month, handleNewDate, handleDateSelection }) => {
+const Week = ({ week, currentDate, bookedDates, month, handleNewDate, handleDateSelection, checkIn }) => {
   return (
     <CalendarWeek>
       {week.map((date) => (
@@ -18,7 +18,8 @@ const Week = ({ week, currentDate, bookedDates, month, handleNewDate, handleDate
              currentDate={currentDate}
              bookedDates={bookedDates}
              handleNewDate={handleNewDate}
-             handleDateSelection={handleDateSelection}/>
+             handleDateSelection={handleDateSelection}
+             checkIn={checkIn}/>
       ))}
     </CalendarWeek>
   )
