@@ -14,7 +14,7 @@ const Availability = styled.section`
 `;
 const Header = styled.h2`
   font-size: 22px;
-  font-family: "Noto",Helvetica,Arial,sans-serif;
+  font-family: "'Noto Sans'",Helvetica,Arial,sans-serif;
   font-weight: 400;
   line-height: 32px;
   color: #444444;
@@ -22,23 +22,32 @@ const Header = styled.h2`
 `;
 const DateRange = styled.div`
   color: #333333;
-  font-family: Noto, Helvetica, Arial, sans-serif;
+  font-family: 'Noto Sans', Helvetica, Arial, sans-serif;
   font-size: 13px;
   line-height: 19px;
   text-align: start;
+  padding-left: 8px;
 `;
 
 const Change = styled.a`
   margin-left: .25rem;  
   box-sizing: border-box;
-  font-family: Noto, Helvetica, Arial, sans-serif;
+  border-left: 1px solid #ccc;
+  font-family: 'Noto Sans', Helvetica, Arial, sans-serif;
   font-size: 13px;
   color: #ff7547;
+  padding-left: 8px;
+  &:hover {
+    color: #ff4000;
+  }
 `;
 const Div = styled.div`
   display: flex;
   flex-direction: row;
-
+  
+`;
+const Span = styled.span`
+  padding-left: 8px;
 `;
 
 class App extends React.Component {
@@ -47,7 +56,7 @@ class App extends React.Component {
     this.state = {
       checkInDate: moment(),
       checkOutDate: moment().add(3, 'days'),
-      newReservation: true,
+      newReservation: false,
       bookedDates: [],
       displayCheckInCalendar: false,
       displayCheckOutCalendar: false,
@@ -112,13 +121,13 @@ class App extends React.Component {
       <Div>
         <div>
           <DateRange>
-            <i>Calendar Image Placeholder</i>
-            <span>{checkInDate.format('ddd D MMM YYYY-') + checkOutDate.format('ddd D MMM YYYY') }</span>
+            <i className="fas fa-calendar-alt"></i>
+            <Span>{checkInDate.format('ddd D MMM YYYY-') + checkOutDate.format('ddd D MMM YYYY') }</Span>
           </DateRange>
         </div>
         <Change>
-          <i>Search Image Placeholder</i>
-          <span onClick= {() => this.handleNewReservation()}>Change</span>
+          <i className="fas fa-search"></i>
+          <Span onClick={() => this.handleNewReservation()}>Change</Span>
         </Change>
       </Div>
     );

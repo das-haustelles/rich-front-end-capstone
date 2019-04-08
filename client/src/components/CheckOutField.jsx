@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Inputs = styled.input`
-  font-family: Noto, Helvetica, Arial, sans-serif;
+  font-family: 'Noto Sans', Helvetica, Arial, sans-serif;
   font-size: 13px;
   color: #666;
   box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
@@ -17,7 +17,7 @@ const Inputs = styled.input`
 const Labels = styled.span`
   font-size: 12px;
   font-weight: bold;
-  font-family: Noto, Helvetica, Arial, sans-serif;
+  font-family: 'Noto Sans', Helvetica, Arial, sans-serif;
   line-height: 12px;
   color: #666666;
   margin-bottom: 8px;

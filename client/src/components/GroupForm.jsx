@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Label = styled.label`
-  font-family: Noto, Helvetica, Arial, sans-serif;
+  font-family: 'Noto Sans', Helvetica, Arial, sans-serif;
   font-size: 13px;
   color: #666;
   padding: 10px 20px;
@@ -21,7 +21,7 @@ const Label = styled.label`
 
 const List = styled.li`
   height: 37px;
-  font-family: "Noto",Helvetica,Arial,sans-serif;
+  font-family: "'Noto Sans'",Helvetica,Arial,sans-serif;
   list-style: none;
   width: 20%;
 `;
@@ -40,7 +40,7 @@ const FormFields = styled.div`
 const Labels = styled.span`
   font-size: 12px;
   font-weight: bold;
-  font-family: Noto, Helvetica, Arial, sans-serif;
+  font-family: 'Noto Sans', Helvetica, Arial, sans-serif;
   line-height: 12px;
   color: #666666;
   width: 100%;

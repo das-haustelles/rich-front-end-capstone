@@ -6,7 +6,7 @@ import Header from './Header';
 import generateDates from '../../utils/generateDates';
 
 const Table = styled.table`
-  font-family: Noto, Helvetica, Arial, sans-serif;
+  font-family: 'Noto Sans', Helvetica, Arial, sans-serif;
   font-size: 13px;
   color: #666;
   box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);

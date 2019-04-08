@@ -3,7 +3,7 @@ import moment from 'moment';
 import styled from 'styled-components';
 
 const HeaderDisplay = styled.h2`
-  font-family: Noto, Helvetica, Arial, sans-serif;
+  font-family: 'Noto Sans', Helvetica, Arial, sans-serif;
   font-size: 13px;
   color: #666;
   text-align: center;
@@ -17,7 +17,7 @@ const Div = styled.div`
 `;
 
 const Span = styled.span`
-  font-family: Noto, Helvetica, Arial, sans-serif;
+  font-family: 'Noto Sans', Helvetica, Arial, sans-serif;
   font-size: 13px;
   color: #666;
   text-align: center;
@@ -28,11 +28,15 @@ const Header = ({ currentMonth, currentYear, handleNext, handlePrev }) => {
   const banner = `${monthDisplay} ${currentYear}`;
   return (
     <Div>
-      <Span onClick={e => handlePrev(e)}> - </Span>
+      <Span onClick={e => handlePrev(e)}> 
+        <i className="fas fa-chevron-left"></i> 
+      </Span>
       <span>
         <HeaderDisplay>{banner}</HeaderDisplay>
       </span>
-      <Span onClick={e => handleNext(e)}> + </Span>
+      <Span onClick={e => handleNext(e)}>
+        <i className="fas fa-chevron-right"></i>
+      </Span>
     </Div>
   );
 };

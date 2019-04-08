@@ -4,14 +4,14 @@ import styled from 'styled-components';
 const InputLabels = styled.span`
   font-size: 12px;
   font-weight: bold;
-  font-family: Noto, Helvetica, Arial, sans-serif;
+  font-family: 'Noto Sans', Helvetica, Arial, sans-serif;
   line-height: 12px;
   color: #666666;
   margin-bottom: .5rem;
   
 `;
 const Select = styled.select`
-  font-family: Noto, Helvetica, Arial, sans-serif;
+  font-family: 'Noto Sans', Helvetica, Arial, sans-serif;
   font-size: 13px;
   box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
   background-color: #fff;

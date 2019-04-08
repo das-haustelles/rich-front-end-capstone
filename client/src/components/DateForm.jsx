@@ -10,7 +10,7 @@ const SearchButton = styled.button`
   background: #ff7547;
   color: #ffffff;
   font-size: 15px;
-  font-family: Noto, Helvetica, Arial, sans-serif;
+  font-family: 'Noto Sans', Helvetica, Arial, sans-serif;
   text-align: center;
   border-radius: 3px;
   height: 37px;
