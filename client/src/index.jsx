@@ -14,7 +14,7 @@ const Availability = styled.section`
 `;
 const Header = styled.h2`
   font-size: 22px;
-  font-family: "'Noto Sans'",Helvetica,Arial,sans-serif;
+  font-family: 'Noto Sans',Helvetica,Arial,sans-serif;
   font-weight: 400;
   line-height: 32px;
   color: #444444;
@@ -117,12 +117,14 @@ class App extends React.Component {
 
   renderSummary() {
     const { checkInDate, checkOutDate } = this.state;
+    const checkIn = checkInDate.format('ddd D MMM YYYY');
+    const checkOut = checkOutDate.format('ddd D MMM YYYY');
     return (
       <Div>
         <div>
           <DateRange>
             <i className="fas fa-calendar-alt"></i>
-            <Span>{checkInDate.format('ddd D MMM YYYY-') + checkOutDate.format('ddd D MMM YYYY') }</Span>
+            <Span>{`${checkIn} - ${checkOut}`}</Span>
           </DateRange>
         </div>
         <Change>

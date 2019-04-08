@@ -26,7 +26,7 @@ const Labels = styled.span`
 const CheckInField = ({ checkIn, handleCheckInClick }) => {
   return (
     <React.Fragment>
-      <Labels>Check In</Labels>
+      <Labels>CHECK IN</Labels>
       <Inputs value={checkIn.format('DD MMM YYYY')} type="text" readOnly="readonly" onClick={() => handleCheckInClick()}></Inputs>
     </React.Fragment>
   );

@@ -31,7 +31,7 @@ const GuestsDropDown = ({ handleNumberOfGuests }) => {
   }
   return (
     <React.Fragment>
-      <InputLabels>Guests</InputLabels>
+      <InputLabels>GUESTS</InputLabels>
         <Select onChange={(e) => handleNumberOfGuests(e)}>
           <option value="1">1 Guest</option>
           {options.map((option) => (

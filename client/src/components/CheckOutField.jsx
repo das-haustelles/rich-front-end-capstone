@@ -26,7 +26,7 @@ const Labels = styled.span`
 const CheckOutField = ({ checkOut, handleCheckOutClick }) => {
   return (
     <React.Fragment>
-      <Labels>Check In</Labels>
+      <Labels>CHECK OUT</Labels>
       <Inputs value={checkOut.format('DD MMM YYYY')} type="text" readOnly="readonly" className="datepicker" onClick={() => handleCheckOutClick()}></Inputs>
     </React.Fragment>
   );

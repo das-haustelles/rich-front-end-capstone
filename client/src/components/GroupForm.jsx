@@ -85,7 +85,7 @@ const GroupForm = () => {
   return (
     <Section>
       <FormFields>
-        <Labels>Group Type</Labels>
+        <Labels>GROUP TYPE</Labels>
         <Select>
           <option>Group Type</option>
           {options.map((option) => (
@@ -94,7 +94,7 @@ const GroupForm = () => {
         </Select>
       </FormFields>
       <FormFields>
-        <Labels>Age Ranges</Labels>
+        <Labels>AGE RANGES</Labels>
         <Ul className="age-ranges-list">
           {ages.map((age) =>(
             <List>
