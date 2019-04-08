@@ -12,26 +12,29 @@ const HeaderDisplay = styled.h2`
 const Div = styled.div`
   display: flex;
   flex-direction: row;
-  align-items: flex-end;
-  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+const Span = styled.span`
+  font-family: Noto, Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  color: #666;
+  text-align: center;
 `;
 
 const Header = ({ currentMonth, currentYear, handleNext, handlePrev }) => {
   const monthDisplay = moment().month(currentMonth).format('MMMM');
-  const banner = monthDisplay + ' ' + currentYear; 
+  const banner = `${monthDisplay} ${currentYear}`;
   return (
     <Div>
-      <span>
-        <button onClick= {(e) => handlePrev(e)}>Prev</button>
-      </span>
+      <Span onClick={e => handlePrev(e)}> - </Span>
       <span>
         <HeaderDisplay>{banner}</HeaderDisplay>
       </span>
-      <span>
-       <button onClick= {(e) => handleNext(e)}>Next</button>
-      </span>
+      <Span onClick={e => handleNext(e)}> + </Span>
     </Div>
-  )
-}
+  );
+};
 
 export default Header;
