@@ -1,27 +1,32 @@
 const path = require('path');
-const SRC_DIR = path.join(__dirname, '/client/src');
-const DIST_DIR = path.join(__dirname, '/public');
+const webpack = require('webpack');
 
 module.exports = {
-  entry: SRC_DIR + '/index.jsx',
-  output: {
-    path: DIST_DIR,
-    filename: 'bundle.js',
+  mode: 'production',
+  entry: path.join(__dirname, '/client'),
+  optimization: {
+    
   },
   module: {
-    rules: [
-      {
-        test: /\.(js|jsx)?$/,
-        include: SRC_DIR,
+    rules: [{
+      test: [/\.(js|jsx)$/],
+      exclude: /node_modules/,
+      use: {
         loader: 'babel-loader',
         options: {
-          presets: ['@babel/preset-env', '@babel/preset-react'],
+          presets: ['@babel/preset-react', '@babel/preset-env'],
         },
       },
-
-    ],
+    }],
+  },
+  output: {
+    path: path.join(__dirname, '/public'),
+    filename: 'bundle.js',
   },
   resolve: {
-    extensions: ['.js', '.json', '.jsx', '.css'],
+    extensions: ['*', '.js', '.jsx'],
+    alias: {
+      'styled-components': path.resolve('/', 'node_modules', 'styled-components'),
+    },
   },
 };

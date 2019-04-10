@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import GroupForm from './GroupForm';
 import GuestsDropDown from './GuestsDropDown';
 import Calendar from './Calendar';
