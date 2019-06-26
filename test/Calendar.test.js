@@ -1,7 +1,7 @@
-import Calendar from '../client/src/components/Calendar';
 import React from 'react';
 import { shallow, render, mount } from 'enzyme';
 import moment from 'moment';
+import Calendar from '../client/src/components/Calendar';
 
 describe('Calendar component', () => {
   test('should shallow correctly', () => {
