@@ -51,21 +51,34 @@ const OtherDay = styled.td`
   }
 `;
 
-const Day = ({ date, currentDate, bookedDates, month, handleNewDate, handleDateSelection, checkIn }) => {
-  const unavailableDates = bookedDates.map((booking) => booking.format('YYYY-MM-DD'));
+const Day = (props) => {
+  const { date, currentDate, bookedDates, month, handleNewDate, handleDateSelection, checkIn } = props;
+  const unavailableDates = bookedDates.map(booking => booking.format('YYYY-MM-DD'));
   const isBookedDate = unavailableDates.indexOf(date.format('YYYY-MM-DD')) === -1;
   const isCheckInDate = date.format('YYYY-MM-DD') === checkIn.format('YYYY-MM-DD');
   const isOtherDay = date.month() !== month || date.isBefore(moment());
 
   if (isOtherDay) {
-    return <OtherDay key={date.date()} onClick={(e) => { handleNewDate(date); handleDateSelection(date); }}>{date.date()}</OtherDay>
+    return <OtherDay 
+              key={date.date()} 
+              onClick={(e) => { handleNewDate(date); handleDateSelection(date); }}>{date.date()}
+           </OtherDay>
   } else if (!isBookedDate) {
-    return <BookedDay key={date.date()} onClick={(e) => { handleNewDate(date); handleDateSelection(date); }}>{date.date()}</BookedDay>
+    return <BookedDay 
+              key={date.date()} 
+              onClick={(e) => { handleNewDate(date); handleDateSelection(date); }}>{date.date()}
+           </BookedDay>
   } else if (isCheckInDate) {
-    return <CurrentDay key={date.date()} onClick={(e) => { handleNewDate(date); handleDateSelection(date); }}>{date.date()}</CurrentDay>
+    return <CurrentDay 
+              key={date.date()}
+              onClick={(e) => { handleNewDate(date); handleDateSelection(date); }}>{date.date()}
+           </CurrentDay>
   } else {
-    return <AvailableDay key={date.date()} onClick={(e) => { handleNewDate(date); handleDateSelection(date); }}>{date.date()}</AvailableDay>
+    return <AvailableDay 
+              key={date.date()}
+              onClick={(e) => { handleNewDate(date); handleDateSelection(date); }}>{date.date()}
+           </AvailableDay>
   }
-}
+};
 
 export default Day;

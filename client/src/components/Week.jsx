@@ -9,20 +9,23 @@ const CalendarWeek = styled.tr`
   text-align: center;
 `;
 
-const Week = ({ week, currentDate, bookedDates, month, handleNewDate, handleDateSelection, checkIn }) => {
+const Week = (props) => {
+  const { week, currentDate, bookedDates, month, handleNewDate, handleDateSelection, checkIn } = props;
   return (
     <CalendarWeek>
-      {week.map((date) => (
-        <Day date={date}
-             month={month}
-             currentDate={currentDate}
-             bookedDates={bookedDates}
-             handleNewDate={handleNewDate}
-             handleDateSelection={handleDateSelection}
-             checkIn={checkIn}/>
+      {week.map(date => (
+        <Day
+          date={date}
+          month={month}
+          currentDate={currentDate}
+          bookedDates={bookedDates}
+          handleNewDate={handleNewDate}
+          handleDateSelection={handleDateSelection}
+          checkIn={checkIn}
+        />
       ))}
     </CalendarWeek>
-  )
-}
+  );
+};
 
 export default Week;

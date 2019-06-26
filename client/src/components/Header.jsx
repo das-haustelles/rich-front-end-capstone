@@ -8,14 +8,12 @@ const HeaderDisplay = styled.h2`
   color: #666;
   text-align: center;
 `;
-
 const Div = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
 `;
-
 const Span = styled.span`
   font-family: 'Noto Sans', Helvetica, Arial, sans-serif;
   font-size: 13px;
@@ -27,9 +25,11 @@ const Span = styled.span`
   }
 `;
 
-const Header = ({ currentMonth, currentYear, handleNext, handlePrev }) => {
+const Header = (props) => {
+  const { currentMonth, currentYear, handleNext, handlePrev } = props;
   const monthDisplay = moment().month(currentMonth).format('MMMM');
   const banner = `${monthDisplay} ${currentYear}`;
+  
   return (
     <Div>
       <Span onClick={e => handlePrev(e)}> 

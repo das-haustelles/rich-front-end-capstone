@@ -1,53 +1,29 @@
-# Project Name
+# Das Haustelles Availability Calendar Microservice
 
-> Project description
+Das Haustelles's Availability Calendar Microservice is the frontend component that allows users to view available dates for a specific hostel to be booked.
 
-## Related Projects
+The component was built using React.js, Express/Node, MySQL (static data for development and demo purposes), and the microservice makes API queries to the `/api/hostels/:id` and `/hostels/:id/bookings` API.
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+There are a breadth of event handlers on the calendar that display dates of a speciic month for a given year, and available booking dates to the user. Additional features include ADD IN DROPDOWN GUEST SELECTION AND LARGE PARTY ACCOMDATATION.
 
-## Table of Contents
+The calendar component is optimized for page load time performance, achieving a score of 98 on Google's PageSpeed Insight Tool. This was done through minification and compression (brotli) of static files reducing payload sizes and script parse time.
 
-1. [Usage](#Usage)
-1. [Requirements](#requirements)
-1. [Development](#development)
+### Availability Calendar Microservice main:<br />
+<img src="https://cl.ly/d1c641691f6f/Image%202019-05-21%20at%208.26.41%20PM.png" alt="Order window defaults to buy state." width="300px" height="510px">
+<br />
 
-## Usage
+### Order type dropdown highlights and renders brand color on hover:<br />
+<img src="https://cl.ly/019c70e16f87/Screen%20Recording%202019-05-21%20at%2008.30%20PM.gif" alt="Dropdown will show all four order types for buy/sell side and highlight upon hover.">
+<br />
 
-- Create a config.js in the /db/utils directory (remember to not push this file) which exports your MYSql username (var userName = 'your username') and corresponding password (var userPass = 'your username')
-  > example: 
-  >
-  >   const userName = 'your username';
-  >
-  >   const userPass = 'your password';
-  >
-  >   module.exports.userName = userName;
-  >
-  >   module.exports.userPass = userPass;
+### Switching to sell orders changes rendering state:<br />
+<img src="https://cl.ly/1861ce4de6e3/Screen%20Recording%202019-05-21%20at%2008.32%20PM.gif" alt="Hovering over Reviews Stars renders an animated Ratings Graphic.">
+<br />
 
-- Ensure a database named 'fec' is available in your MYSql database
-- From the root directory, start the server with 'npm run start', seed the db with 'npm run seedDB'  and create the bundle.js with 'npm run build'
+### Expiration dropdown allows users to choose expiry option per order:<br />
+<img src="https://cl.ly/3dda5903c7d4/Screen%20Recording%202019-05-21%20at%2008.35%20PM.gif" alt="Dropdown options for Expiration field">
+<br />
 
-- Navigate to localhost:3001/hostels/:id where ':id' is a number of the hostel from 1 - 100
+## About Das Haustelles
 
-## Requirements
-
-An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
-
-- Node 6.13.0
-- etc
-
-## Development
-
-### Installing Dependencies
-
-From within the root directory:
-
-```sh
-npm install -g webpack
-npm install
-```
-
+> Das Haustelles is a hostel focused booking platform. It is a project started in April 2019 meant to mimic the frontend behavior of other accomdation booking platforms. Upon completion of the frontend development, the team moved on to other individual projects.

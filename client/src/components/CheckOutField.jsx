@@ -26,14 +26,20 @@ const Labels = styled.span`
   margin-bottom: 8px;
 `;
 
-const CheckOutField = ({ checkOut, handleCheckOutClick }) => {
+const CheckOutField = (props) => {
+  const { checkOut, handleCheckOutClick } = props;
+
   return (
     <React.Fragment>
       <Labels>CHECK OUT</Labels>
-      <Inputs value={checkOut.format('DD MMM YYYY')} type="text" readOnly="readonly" className="datepicker" onClick={() => handleCheckOutClick()}></Inputs>
+      <Inputs
+        value={checkOut.format('DD MMM YYYY')}
+        type="text"
+        readOnly="readonly"
+        className="datepicker"
+        onClick={() => handleCheckOutClick()}></Inputs>
     </React.Fragment>
   );
 };
-
 
 export default CheckOutField;

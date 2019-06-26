@@ -28,7 +28,6 @@ const DateRange = styled.div`
   text-align: start;
   padding-left: 8px;
 `;
-
 const Change = styled.a`
   margin-left: .25rem;  
   box-sizing: border-box;
@@ -45,7 +44,6 @@ const Change = styled.a`
 const Div = styled.div`
   display: flex;
   flex-direction: row;
-  
 `;
 const Span = styled.span`
   padding-left: 8px;
@@ -62,6 +60,7 @@ class App extends React.Component {
       displayCheckInCalendar: false,
       displayCheckOutCalendar: false,
     };
+
     this.handleNewDate = this.handleNewDate.bind(this);
     this.handleCheckInClick = this.handleCheckInClick.bind(this);
     this.handleCheckOutClick = this.handleCheckOutClick.bind(this);
@@ -73,6 +72,7 @@ class App extends React.Component {
       .then((response) => {
         const checkInDate = moment(response.data.checkInDate);
         const checkOutDate = moment(response.data.checkOutDate);
+
         this.setState({
           checkInDate,
           checkOutDate,
@@ -82,6 +82,7 @@ class App extends React.Component {
       .then((response) => {
         const dates = response.data;
         const bookedDates = dates.map(date => moment(date));
+
         this.setState({
           bookedDates,
         });
@@ -94,6 +95,7 @@ class App extends React.Component {
 
   handleNewDate(date) {
     const newDate = moment(date);
+    
     this.setState({
       checkInDate: newDate,
       checkOutDate: moment(newDate).add(1, 'days'),
@@ -120,6 +122,7 @@ class App extends React.Component {
     const { checkInDate, checkOutDate } = this.state;
     const checkIn = checkInDate.format('ddd D MMM YYYY');
     const checkOut = checkOutDate.format('ddd D MMM YYYY');
+
     return (
       <Div>
         <div>
@@ -140,16 +143,19 @@ class App extends React.Component {
     const {
       checkInDate, checkOutDate, bookedDates, displayCheckInCalendar, displayCheckOutCalendar,
     } = this.state;
+
     return (
       <div>
-        <DateForm checkIn= {checkInDate} 
-                  checkOut={checkOutDate} 
-                  bookedDates= {bookedDates}
-                  handleNewDate={this.handleNewDate}
-                  displayCheckInCalendar={displayCheckInCalendar} 
-                  displayCheckOutCalendar={displayCheckOutCalendar}
-                  handleCheckInClick={this.handleCheckInClick} 
-                  handleCheckOutClick={this.handleCheckOutClick} />
+        <DateForm
+          checkIn={checkInDate}
+          checkOut={checkOutDate}
+          bookedDates={bookedDates}
+          handleNewDate={this.handleNewDate}
+          displayCheckInCalendar={displayCheckInCalendar}
+          displayCheckOutCalendar={displayCheckOutCalendar}
+          handleCheckInClick={this.handleCheckInClick}
+          handleCheckOutClick={this.handleCheckOutClick}
+        />
       </div>
     );
   }

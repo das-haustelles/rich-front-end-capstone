@@ -26,17 +26,19 @@ const Labels = styled.span`
   margin-bottom: 8px;
 `;
 
-const CheckInField = ({ checkIn, handleCheckInClick }) => {
+const CheckInField = (props) => {
+  const { checkIn, handleCheckInClick } = props;
+
   return (
     <React.Fragment>
       <Labels>CHECK IN</Labels>
-      <Inputs value={checkIn.format('DD MMM YYYY')}
+      <Inputs
+        value={checkIn.format('DD MMM YYYY')}
         type="text"
         readOnly="readonly"
         onClick={() => handleCheckInClick()}></Inputs>
     </React.Fragment>
   );
 };
-
 
 export default CheckInField;

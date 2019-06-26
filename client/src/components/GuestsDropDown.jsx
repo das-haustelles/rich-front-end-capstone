@@ -24,7 +24,8 @@ const Select = styled.select`
   height: 37px;
 `;
 
-const GuestsDropDown = ({ handleNumberOfGuests }) => {
+const GuestsDropDown = (props) => {
+  const { handleNumberOfGuests } = props;
   const options = [];
   for (let i = 2; i <= 80; i += 1) {
     options.push(i);
@@ -32,12 +33,10 @@ const GuestsDropDown = ({ handleNumberOfGuests }) => {
   return (
     <React.Fragment>
       <InputLabels>GUESTS</InputLabels>
-        <Select onChange={(e) => handleNumberOfGuests(e)}>
-          <option value="1">1 Guest</option>
-          {options.map((option) => (
-            <option value={option}>{option} Guests</option>
-          ))}
-        </Select>
+      <Select onChange={e => handleNumberOfGuests(e)}>
+        <option value="1">1 Guest</option>
+        {options.map(option => (<option value={option}>{`${option} Guests`}</option>))}
+      </Select>
     </React.Fragment>
   );
 };

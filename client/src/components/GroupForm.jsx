@@ -19,7 +19,6 @@ const Label = styled.label`
     cursor: pointer;
   }
 `;
-
 const List = styled.li`
   height: 37px;
   font-family: "'Noto Sans'",Helvetica,Arial,sans-serif;
@@ -71,6 +70,7 @@ const Select = styled.select`
   width: 100%;
   height: 37px;
 `;
+
 const GroupForm = () => {
   const options = [
     'Holiday with Friends',
@@ -83,30 +83,32 @@ const GroupForm = () => {
     'Cultural Group',
   ];
   const ages = ['0-12', '12-18', '18-21', '21-35', '35-50', '50+'];
+
   return (
     <Section>
       <FormFields>
         <Labels>GROUP TYPE</Labels>
         <Select>
           <option>Group Type</option>
-          {options.map((option) => (
-            <option value={option}>{option}</option>
-          ))}
+          {options.map(option => (<option value={option}>{option}</option>))}
         </Select>
       </FormFields>
       <FormFields>
         <Labels>AGE RANGES</Labels>
         <Ul className="age-ranges-list">
-          {ages.map((age) =>(
+          {ages.map(age => (
             <List>
-              <Input id={"58-age-ranges-" + ages.indexOf(age)} type="checkbox" value={age}></Input>
+              <Input
+                id={"58-age-ranges-" + ages.indexOf(age)}
+                type="checkbox" value={age}>
+              </Input>
               <Label htmlFor={"58-age-ranges-" + ages.indexOf(age)}>{age}</Label>
             </List>
           ))}
         </Ul>
       </FormFields>
     </Section>
-  )
-}
+  );
+};
 
 export default GroupForm;
