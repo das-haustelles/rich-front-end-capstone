@@ -20,6 +20,7 @@ const Td = styled.td`
   border: 1px solid #ccc;
   background-color: #f4f4f4;
 `;
+
 class Calendar extends React.Component {
   constructor(props) {
     super(props);
@@ -39,6 +40,7 @@ class Calendar extends React.Component {
     const year = moment(checkIn).year();
     const month = moment(checkIn).month();
     const dates = generateDates(year, month);
+
     this.setState({
       year,
       month,
@@ -53,6 +55,7 @@ class Calendar extends React.Component {
     const nextMonth = dateObject.month();
     const currentYear = dateObject.year();
     const dates = generateDates(currentYear, nextMonth);
+
     this.setState({
       month: nextMonth,
       year: currentYear,
@@ -67,6 +70,7 @@ class Calendar extends React.Component {
     const prevMonth = dateObject.month();
     const currentYear = dateObject.year();
     const dates = generateDates(currentYear, prevMonth);
+
     this.setState({
       month: prevMonth,
       year: currentYear,
@@ -78,6 +82,7 @@ class Calendar extends React.Component {
     const month = moment(date).month();
     const year = moment(date).year();
     const dates = generateDates(year, month);
+
     this.setState({
       month,
       year,
@@ -105,14 +110,15 @@ class Calendar extends React.Component {
             <tr>{weekdays.map(day => <Td>{day}</Td>)}</tr>
           </thead>
           <tbody>
-            {dates.map(week => 
-              <Week week={week}
-                month={month}
-                currentDate={currentDate}
-                bookedDates={bookedDates}
-                handleNewDate={handleNewDate}
-                handleDateSelection={this.handleDateSelection}
-                checkIn={checkIn}/>)}
+            {dates.map(week => <Week
+              week={week}
+              month={month}
+              currentDate={currentDate}
+              bookedDates={bookedDates}
+              handleNewDate={handleNewDate}
+              handleDateSelection={this.handleDateSelection}
+              checkIn={checkIn}
+            />)}
           </tbody>
         </Table>
       </div>
