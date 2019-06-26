@@ -8,7 +8,7 @@ There are a breadth of event handlers on the calendar that display dates of a sp
 
 The calendar component is optimized for page load time performance, achieving a score of 98 on Google's PageSpeed Insight Tool. This was done through minification and compression (brotli) of static files reducing payload sizes and script parse time.
 
-### Availability Calendar Microservice main:<br />
+### Availability Calendar Microservice:<br />
 <img src="https://das-haustelles-hostel-world.s3-us-west-1.amazonaws.com/calendar.png">
 <br />
 
