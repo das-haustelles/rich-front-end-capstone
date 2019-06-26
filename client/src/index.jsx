@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import moment from 'moment';
 import axios from 'axios';
+import styled from 'styled-components';
 import DateForm from './components/DateForm';
 
 const Availability = styled.section`

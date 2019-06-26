@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 
 const Inputs = styled.input`
   font-family: 'Noto Sans', Helvetica, Arial, sans-serif;
@@ -29,7 +30,10 @@ const CheckInField = ({ checkIn, handleCheckInClick }) => {
   return (
     <React.Fragment>
       <Labels>CHECK IN</Labels>
-      <Inputs value={checkIn.format('DD MMM YYYY')} type="text" readOnly="readonly" onClick={() => handleCheckInClick()}></Inputs>
+      <Inputs value={checkIn.format('DD MMM YYYY')}
+        type="text"
+        readOnly="readonly"
+        onClick={() => handleCheckInClick()}></Inputs>
     </React.Fragment>
   );
 };

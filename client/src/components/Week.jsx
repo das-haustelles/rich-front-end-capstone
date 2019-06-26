@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import Day from './Day';
 
 const CalendarWeek = styled.tr`
